@@ -4,6 +4,8 @@
   width: 30vw;
   padding: 0 0 10px 10px;
   cursor: pointer;
+  border: 1px rgb(70, 52, 20) dashed;
+  margin-bottom: 10px;
 }
 
 .card-header {
