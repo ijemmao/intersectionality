@@ -13,8 +13,12 @@ export default class App extends Component {
 
   createNewTerm = (information) => {
     let testingData = this.testingData;
-    testingData.push({ word: information.word, definition: information.definition });
-    this.setState({ testingData: testingData });
+    if (information.word && information.definition && information.definition.length > 10) {
+      testingData.push({ word: information.word, definition: information.definition });
+      this.setState({ testingData: testingData });
+    } else {
+      console.log('Either the term was not included or the definition was too short');
+    }
   }
 
   openModal = () => {

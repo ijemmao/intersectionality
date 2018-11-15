@@ -2,6 +2,8 @@
   font-family: 'Playfair Display', sans-serif;
   background-color: rgb(255, 208, 119);
   width: 30vw;
+  padding: 0 0 10px 10px;
+  cursor: pointer;
 }
 
 .word {

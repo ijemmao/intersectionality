@@ -38,7 +38,7 @@ export default class CardList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="card-list">
         <Modal
           isOpen={this.props.modalIsOpen}
           onRequestClose={this.props.closeModal}
@@ -50,8 +50,10 @@ export default class CardList extends Component {
               <h1>New Term</h1>
               <input name="word" placeholder="e.g. word" value={this.state.word} onChange={(e) => this.handleWordText(e)}></input>
               <input name="word-type" placeholder="e.g. noun" value={this.state.type} onChange={this.handleTypeText}></input>
-              <input name="defintion" placeholder="e.g. this is a defintion" value={this.state.defintiion} onChange={this.handleDefinitionText}></input>
-              <button onClick={() => this.props.createNewTerm}>submit</button>
+              <input name="defintion" placeholder="e.g. this is a defintion" value={this.state.definition} onChange={this.handleDefinitionText}></input>
+              <button onClick={() => {
+                this.props.createNewTerm({ word: this.state.word, type: this.state.type, definition: this.state.definition })
+                }}>submit</button>
             </div>
             <div className="word-instructions-container">
               <p>just remember this is a tool that is supposed to help the community</p>
@@ -63,7 +65,7 @@ export default class CardList extends Component {
           </div>
         </Modal>
         <h1>Definitions</h1>
-        <img src={newNote} alt="new note" className="icon" onClick={() => {
+        <img src={newNote} alt="new note" className="icon new-note" onClick={() => {
           this.setState({
             word: '',
             type: '',
@@ -71,7 +73,9 @@ export default class CardList extends Component {
           });
           this.props.openModal()
           }} />
-        {this.renderCards()}
+        <div className="cards">
+          {this.renderCards()}
+        </div>
       </div>
     )
   }

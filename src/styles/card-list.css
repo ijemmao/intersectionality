@@ -12,3 +12,14 @@
   position: relative;
   float: right;
 }
+
+.new-note {
+  position: relative;
+  float: right;
+}
+
+.cards {
+  position: relative;
+  float: right;
+  overflow-y: scroll;
+}
