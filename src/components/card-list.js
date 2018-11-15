@@ -51,18 +51,18 @@ export default class CardList extends Component {
               <input name="word" placeholder="e.g. word" value={this.state.word} onChange={(e) => this.handleWordText(e)}></input>
               <input name="word-type" placeholder="e.g. noun" value={this.state.type} onChange={this.handleTypeText}></input>
               <input name="defintion" placeholder="e.g. this is a defintion" value={this.state.definition} onChange={this.handleDefinitionText}></input>
-              <button onClick={() => {
+              <button className="submit-term" onClick={() => {
                 if (this.props.createNewTerm({ word: this.state.word, type: this.state.type, definition: this.state.definition })) {
                   this.props.closeModal();
                 }
                 }}>submit</button>
             </div>
             <div className="word-instructions-container">
-              <p>just remember this is a tool that is supposed to help the community</p>
-              <p>this cards will be publically accessed and cannot be removed unless requested</p>
-              <p>create cards that will make for a more inclusive space</p>
-              <p>if you are unable to create your card, the card already exists</p>
-              <p>have fun!</p>
+              <p>Think of the following when adding a new term to the platform:</p>
+              <p>This tool is open to the public! Think about the terms your place here before you add them. This tool is supposed to support the numerous communities that exist.</p>
+              <p>These cards will be publically accessed and cannot be removed unless requested.</p>
+              <p>If you're unable to add your term to the platform, make sure that the definition is long enough and that it hasn't been added already</p>
+              <p>Enjoy</p>
             </div>
           </div>
         </Modal>
