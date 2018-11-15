@@ -52,7 +52,9 @@ export default class CardList extends Component {
               <input name="word-type" placeholder="e.g. noun" value={this.state.type} onChange={this.handleTypeText}></input>
               <input name="defintion" placeholder="e.g. this is a defintion" value={this.state.definition} onChange={this.handleDefinitionText}></input>
               <button onClick={() => {
-                this.props.createNewTerm({ word: this.state.word, type: this.state.type, definition: this.state.definition })
+                if (this.props.createNewTerm({ word: this.state.word, type: this.state.type, definition: this.state.definition })) {
+                  this.props.closeModal();
+                }
                 }}>submit</button>
             </div>
             <div className="word-instructions-container">

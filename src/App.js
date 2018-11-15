@@ -16,9 +16,10 @@ export default class App extends Component {
     if (information.word && information.definition && information.definition.length > 10) {
       testingData.push({ word: information.word, type: information.type, definition: information.definition });
       this.setState({ testingData: testingData });
-    } else {
-      console.log('Either the term was not included or the definition was too short');
+      return true;
     }
+      console.log('Either the term was not included or the definition was too short');
+      return false;
   }
 
   openModal = () => {
