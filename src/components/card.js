@@ -10,8 +10,11 @@ export default class Card extends Component {
   render() {
     return (
       <div className="card">
-        <h2 className="word">{this.props.word}</h2>
-        <h6 className="word-definition">{this.props.definition}</h6>
+        <div className="card-header">
+          <h2 className="word">{this.props.word}</h2>
+          <h3 className="type">{this.props.type}</h3>
+        </div>
+        <h5 className="word-definition">{this.props.definition}</h5>
       </div>
     )
   }

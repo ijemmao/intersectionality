@@ -1,3 +1,8 @@
+.card-list {
+  position: relative;
+  float: right;
+}
+
 .modal-content-container {
   display: flex;
 }
@@ -13,13 +18,6 @@
   float: right;
 }
 
-.new-note {
-  position: relative;
-  float: right;
-}
-
 .cards {
-  position: relative;
-  float: right;
   overflow-y: scroll;
 }

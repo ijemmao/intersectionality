@@ -8,13 +8,13 @@ export default class App extends Component {
     this.state = {
       modalIsOpen: false,
     };
-    this.testingData = [{ word: 'ijemma', definition: 'a student at dartmouth college'}, { word: 'dance', definition: 'the act of moving the body to music' }]
+    this.testingData = [{ word: 'ijemma', type: 'person', definition: 'a student at dartmouth college'}, { word: 'dance', definition: 'the act of moving the body to music' }]
   }
 
   createNewTerm = (information) => {
     let testingData = this.testingData;
     if (information.word && information.definition && information.definition.length > 10) {
-      testingData.push({ word: information.word, definition: information.definition });
+      testingData.push({ word: information.word, type: information.type, definition: information.definition });
       this.setState({ testingData: testingData });
     } else {
       console.log('Either the term was not included or the definition was too short');

@@ -20,7 +20,7 @@ export default class CardList extends Component {
 
   renderCards = () => {
     return this.props.words.map((data) => {
-      return <Card word={data.word} definition={data.definition} />
+      return <Card word={data.word} type={data.type} definition={data.definition} />
     })
   }
 
