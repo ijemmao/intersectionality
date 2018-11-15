@@ -3,6 +3,13 @@
   float: right;
 }
 
+.card-list-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .modal-content-container {
   display: flex;
 }

@@ -66,15 +66,17 @@ export default class CardList extends Component {
             </div>
           </div>
         </Modal>
-        <h1>Definitions</h1>
-        <img src={newNote} alt="new note" className="icon new-note" onClick={() => {
-          this.setState({
-            word: '',
-            type: '',
-            definition: '',
-          });
-          this.props.openModal()
+        <div className="card-list-header">
+          <h1>Definitions</h1>
+          <img src={newNote} alt="new note" className="icon new-note" onClick={() => {
+            this.setState({
+              word: '',
+              type: '',
+              definition: '',
+            });
+            this.props.openModal()
           }} />
+        </div>
         <div className="cards">
           {this.renderCards()}
         </div>
