@@ -1,0 +1,16 @@
+.card {
+  font-family: 'Playfair Display', sans-serif;
+  background-color: rgb(255, 208, 119);
+  width: 30vw;
+}
+
+.word {
+  color: rgb(70, 52, 20);
+  font-weight: 700;
+}
+
+.word-definition {
+  color: rgb(70, 52, 20);
+  font-weight: 400;
+  margin: 0;
+}

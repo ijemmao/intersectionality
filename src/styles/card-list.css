@@ -1,0 +1,9 @@
+.modal-content-container {
+  display: flex;
+}
+
+.word-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+}
