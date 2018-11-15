@@ -7,3 +7,8 @@
   flex-direction: column;
   width: 40vw;
 }
+
+.exit {
+  position: relative;
+  float: right;
+}

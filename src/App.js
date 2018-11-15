@@ -11,6 +11,12 @@ export default class App extends Component {
     this.testingData = [{ word: 'ijemma', definition: 'a student at dartmouth college'}, { word: 'dance', definition: 'the act of moving the body to music' }]
   }
 
+  createNewTerm = (information) => {
+    let testingData = this.testingData;
+    testingData.push({ word: information.word, definition: information.definition });
+    this.setState({ testingData: testingData });
+  }
+
   openModal = () => {
     this.setState({ modalIsOpen: true });
   }
@@ -21,7 +27,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <CardList words={this.testingData} modalIsOpen={this.state.modalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
+        <CardList words={this.testingData} createNewTerm={this.createNewTerm} modalIsOpen={this.state.modalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
       </div>
     );
   }
