@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable';
+import notes from './../actions/notes';
 import './../styles/note-card.css';
 
 export default class NoteCard extends Component {
@@ -7,8 +8,8 @@ export default class NoteCard extends Component {
     super(props);
     this.state = {
       position: {
-        x: 0,
-        y: 0,
+        x: this.props.x,
+        y: this.props.y,
       }
     };
   }
@@ -23,6 +24,7 @@ export default class NoteCard extends Component {
 
   onStopDrag = (e) => {
     this.setState({ position: { x: e.clientX * .6 , y: e.clientY * .6}});
+    notes.updateNotePosition({ id: this.props.id, title: this.props.title, text: this.props.text, x: e.clientX * .6, y: e.clientY * .6});
   }
 
   render() {

@@ -9,4 +9,8 @@ const getNotes = () => {
   return database.ref('notes').once('value');
 }
 
-export default { addNote, getNotes };
+const updateNotePosition = (data) => {
+  database.ref(`notes/${data.id}`).set({ title: data.title, text: data.text, x: data.x, y: data.x });
+}
+
+export default { addNote, getNotes, updateNotePosition };

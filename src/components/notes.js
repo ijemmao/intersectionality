@@ -18,7 +18,7 @@ export default class Notes extends Component {
     let noteCards = [];
     for (let key in this.props.noteCards) {
       let card = this.props.noteCards[key];
-      noteCards.push(<NoteCard title={card.title} text={card.text} />)
+      noteCards.push(<NoteCard key={key} id={key} title={card.title} text={card.text} x={card.x} y={card.y} />)
     }
     return noteCards;
   }
@@ -46,7 +46,7 @@ export default class Notes extends Component {
               <input name="title" placeholder="e.g. this is a title" value={this.state.title} onChange={this.handleTitleText}></input>
               <input name="text" placeholder="e.g. this is a description" value={this.state.text} onChange={this.handleText}></input>
               <button className="submit-note" onClick={() => {
-                if (this.props.createNewNote({ title: this.state.title, text: this.state.text })) {
+                if (this.props.createNewNote({ title: this.state.title, text: this.state.text, x: 0, y: 0 })) {
                   this.props.closeModal('note');
                 }
               }}>submit</button>
