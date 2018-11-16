@@ -1,0 +1,10 @@
+.notes {
+  width: 70vw;
+}
+
+.notes-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

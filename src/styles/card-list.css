@@ -1,6 +1,7 @@
 .card-list {
   position: relative;
   float: right;
+  width: 30vw;
 }
 
 .card-list-header {
