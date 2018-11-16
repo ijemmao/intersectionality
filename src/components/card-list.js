@@ -22,7 +22,7 @@ export default class CardList extends Component {
     let terms = [];
     for (let key in this.props.terms) {
       let data = this.props.terms[key];
-      terms.push(<Card term={data.term} type={data.type} definition={data.definition} />);
+      terms.push(<Card key={key} id={key} term={data.term} type={data.type} definition={data.definition} />);
     }
     return terms;
   }
