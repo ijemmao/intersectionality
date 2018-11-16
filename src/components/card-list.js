@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import Card from './card';
 import newNote from './../assets/images/new_note.svg';
 import exit from './../assets/images/exit.svg';
-import * as terms from './../actions/terms';
+import terms from './../actions/terms';
 import './../styles/card-list.css';
 
 export default class CardList extends Component {
@@ -54,6 +54,7 @@ export default class CardList extends Component {
               <input name="defintion" placeholder="e.g. this is a defintion" value={this.state.definition} onChange={this.handleDefinitionText}></input>
               <button className="submit-term" onClick={() => {
                 if (this.props.createNewTerm({ word: this.state.word, type: this.state.type, definition: this.state.definition })) {
+                  console.log('okokok');
                   terms.addTerm({ word: this.state.word, type: this.state.type, definition: this.state.definition });
                   this.props.closeModal();
                 }
