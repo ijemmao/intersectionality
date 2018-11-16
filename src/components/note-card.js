@@ -13,7 +13,7 @@ export default class NoteCard extends Component {
       }
     };
   }
-  
+
   onDrag = (e) => {
     this.setState({ position: { x: e.clientX, y: e.clientY }});
   }

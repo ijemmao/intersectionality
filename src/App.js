@@ -73,8 +73,8 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Notes noteCards={this.state.notes} createNewNote={this.createNewNote} noteModalIsOpen={this.state.noteModalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
-        <CardList terms={this.state.terms} createNewTerm={this.createNewTerm} modalIsOpen={this.state.modalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
+        <Notes uid={this.state.uid} noteCards={this.state.notes} createNewNote={this.createNewNote} noteModalIsOpen={this.state.noteModalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
+        <CardList uid={this.state.uid} terms={this.state.terms} createNewTerm={this.createNewTerm} modalIsOpen={this.state.modalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
       </div>
     );
   }

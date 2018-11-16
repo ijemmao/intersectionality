@@ -46,7 +46,7 @@ export default class Notes extends Component {
               <input name="title" placeholder="e.g. this is a title" value={this.state.title} onChange={this.handleTitleText}></input>
               <input name="text" placeholder="e.g. this is a description" value={this.state.text} onChange={this.handleText}></input>
               <button className="submit-note" onClick={() => {
-                if (this.props.createNewNote({ title: this.state.title, text: this.state.text, x: 0, y: 0 })) {
+                if (this.props.createNewNote({ author: this.props.uid, title: this.state.title, text: this.state.text, x: 0, y: 0 })) {
                   this.props.closeModal('note');
                 }
               }}>submit</button>
