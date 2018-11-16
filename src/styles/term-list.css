@@ -1,11 +1,12 @@
-.card-list {
+.term-list {
   position: relative;
   float: right;
+  height: 100vh;
   width: 30vw;
   padding-left: 20px;
 }
 
-.card-list-header {
+.term-list-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

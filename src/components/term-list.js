@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import Term from './term';
 import newNote from './../assets/images/new_note.svg';
 import exit from './../assets/images/exit.svg';
-import './../styles/card-list.css';
+import './../styles/term-list.css';
 
 export default class TermList extends Component {
   constructor(props) {
@@ -41,7 +41,7 @@ export default class TermList extends Component {
 
   render() {
     return (
-      <div className="card-list">
+      <div className="term-list">
         <Modal
           isOpen={this.props.modalIsOpen}
           onRequestClose={this.props.closeModal}
@@ -69,7 +69,7 @@ export default class TermList extends Component {
             </div>
           </div>
         </Modal>
-        <div className="card-list-header">
+        <div className="term-list-header">
           <div>
             <h1>Terms</h1>
             <h6>Select your identities for anonymous data collection</h6>

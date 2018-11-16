@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import terms from '../actions/terms';
-import './../styles/card.css';
+import './../styles/term.css';
 
 export default class Term extends Component {
   constructor(props) {
@@ -23,10 +23,10 @@ export default class Term extends Component {
   render() {
     return (
       <div className="card">
+        <input id={this.props.id} className="checkbox" type="checkbox" onClick={this.handleSelection} />
         <div className="card-header">
           <h2 className="term">{this.props.term.term}</h2>
           <h3 className="type">{this.props.term.type}</h3>
-          <input id={this.props.id} className="checkbox" type="checkbox" onClick={this.handleSelection} />
         </div>
         <h5 className="term-definition">{this.props.term.definition}</h5>
       </div>
