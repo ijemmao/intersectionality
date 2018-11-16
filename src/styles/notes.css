@@ -1,0 +1,16 @@
+.notes {
+  width: 70vw;
+  padding-left: 20px;
+}
+
+.notes-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submit-note {
+  height: 35px;
+  width: 100px;
+}

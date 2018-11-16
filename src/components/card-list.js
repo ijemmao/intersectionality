@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import Modal from 'react-modal';
 import Card from './card';
 import newNote from './../assets/images/new_note.svg';
-import Modal from 'react-modal';
 import exit from './../assets/images/exit.svg';
 import './../styles/card-list.css';
 
@@ -48,7 +48,7 @@ export default class CardList extends Component {
           <div className="modal-content-container">
             <div className="word-input-container">
               <h1>New Term</h1>
-              <input name="word" placeholder="e.g. word" value={this.state.word} onChange={(e) => this.handleWordText(e)}></input>
+              <input name="word" placeholder="e.g. word" value={this.state.word} onChange={this.handleWordText}></input>
               <input name="word-type" placeholder="e.g. noun" value={this.state.type} onChange={this.handleTypeText}></input>
               <input name="defintion" placeholder="e.g. this is a defintion" value={this.state.definition} onChange={this.handleDefinitionText}></input>
               <button className="submit-term" onClick={() => {
