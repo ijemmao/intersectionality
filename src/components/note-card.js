@@ -20,7 +20,7 @@ export default class NoteCard extends Component {
 
   onStopDrag = (e) => {
     this.setState({ position: { x: e.clientX * .6 , y: e.clientY * .6}});
-    notes.updateNotePosition({ id: this.props.id, title: this.props.title, text: this.props.text, x: e.clientX * .6, y: e.clientY * .6});
+    notes.updateNotePosition({ id: this.props.id, title: this.props.card.title, text: this.props.card.text, x: e.clientX * .6, y: e.clientY * .6});
   }
 
   render() {
