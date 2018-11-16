@@ -17,7 +17,6 @@ const getTerm = (id) => {
 const updateTerm = (data) => {
   getTerm(data.id).then((snapshot) => {
     let value = snapshot.val();
-    console.log(value);
     if (!value.selection) {
       value['selection'] = {};
     }
