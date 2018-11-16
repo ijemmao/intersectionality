@@ -15,9 +15,12 @@ export default class Notes extends Component {
   }
 
   renderNoteCards = () => {
-    return this.props.noteCards.map((card) => {
-      return <NoteCard title={card.title} text={card.text} />
-    })
+    let noteCards = [];
+    for (let key in this.props.noteCards) {
+      let card = this.props.noteCards[key];
+      noteCards.push(<NoteCard uid={this.props.uid} key={key} id={key} card={card} />)
+    }
+    return noteCards;
   }
 
   handleTitleText = (e) => {
@@ -43,7 +46,7 @@ export default class Notes extends Component {
               <input name="title" placeholder="e.g. this is a title" value={this.state.title} onChange={this.handleTitleText}></input>
               <input name="text" placeholder="e.g. this is a description" value={this.state.text} onChange={this.handleText}></input>
               <button className="submit-note" onClick={() => {
-                if (this.props.createNewNote({ title: this.state.title, text: this.state.text })) {
+                if (this.props.createNewNote({ author: this.props.uid, title: this.state.title, text: this.state.text, x: 0, y: 0 })) {
                   this.props.closeModal('note');
                 }
               }}>submit</button>
@@ -60,7 +63,7 @@ export default class Notes extends Component {
         <div className="notes-header">
           <div>
             <h1>Notes</h1>
-            <h6>Feel free to drag them around!</h6>
+            <h6>Feel free to drag them around</h6>
           </div>
           <img src={newNote} alt="new note" className="icon new-note" onClick={() => {
             this.setState({

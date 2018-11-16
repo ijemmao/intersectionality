@@ -1,7 +1,8 @@
 .note-card {
+  position: absolute;
   border: 1px rgb(70, 52, 20) dashed;
   width: 15vw;
-  padding-left: 20px;
-  overflow-wrap: normal;
+  padding: 0 20px;
+  overflow-wrap: break-word;
   cursor: pointer;
 }

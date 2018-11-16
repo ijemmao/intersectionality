@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import Card from './card';
+import Term from './term';
 import newNote from './../assets/images/new_note.svg';
 import exit from './../assets/images/exit.svg';
-import './../styles/card-list.css';
+import './../styles/term-list.css';
 
-export default class CardList extends Component {
+export default class TermList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      word: '',
+      term: '',
       type: '',
       definition: '',
     };
@@ -18,14 +18,17 @@ export default class CardList extends Component {
     Modal.setAppElement('body');
   }
 
-  renderCards = () => {
-    return this.props.words.map((data) => {
-      return <Card word={data.word} type={data.type} definition={data.definition} />
-    })
+  renderTerms = () => {
+    let terms = [];
+    for (let key in this.props.terms) {
+      let term = this.props.terms[key];
+      terms.push(<Term uid={this.props.uid} key={key} id={key} term={term} />)
+    }
+    return terms;
   }
 
   handleWordText = (e) => {
-    this.setState({ word: e.target.value });
+    this.setState({ term: e.target.value });
   }
 
   handleTypeText = (e) => {
@@ -38,7 +41,7 @@ export default class CardList extends Component {
 
   render() {
     return (
-      <div className="card-list">
+      <div className="term-list">
         <Modal
           isOpen={this.props.modalIsOpen}
           onRequestClose={this.props.closeModal}
@@ -48,11 +51,11 @@ export default class CardList extends Component {
           <div className="modal-content-container">
             <div className="word-input-container">
               <h1>New Term</h1>
-              <input name="word" placeholder="e.g. word" value={this.state.word} onChange={this.handleWordText}></input>
+              <input name="word" placeholder="e.g. word" value={this.state.term} onChange={this.handleWordText}></input>
               <input name="word-type" placeholder="e.g. noun" value={this.state.type} onChange={this.handleTypeText}></input>
               <input name="defintion" placeholder="e.g. this is a defintion" value={this.state.definition} onChange={this.handleDefinitionText}></input>
               <button className="submit-term" onClick={() => {
-                if (this.props.createNewTerm({ word: this.state.word, type: this.state.type, definition: this.state.definition })) {
+                if (this.props.createNewTerm({ author: this.props.uid, term: this.state.term, type: this.state.type, definition: this.state.definition })) {
                   this.props.closeModal();
                 }
                 }}>submit</button>
@@ -66,21 +69,24 @@ export default class CardList extends Component {
             </div>
           </div>
         </Modal>
-        <div className="card-list-header">
-          <h1>Definitions</h1>
+        <div className="term-list-header">
+          <div>
+            <h1>Terms</h1>
+            <h6>Select your identities for anonymous data collection</h6>
+          </div>
           <img src={newNote} alt="new note" className="icon new-note" onClick={() => {
             this.setState({
-              word: '',
+              term: '',
               type: '',
               definition: '',
             });
             this.props.openModal()
-          }} />
+            }} />
+          </div>
+          <div className="terms">
+            {this.renderTerms()}
+          </div>
         </div>
-        <div className="cards">
-          {this.renderCards()}
-        </div>
-      </div>
     )
   }
 }
