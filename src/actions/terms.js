@@ -1,5 +1,5 @@
-import * as db from './../firebase/config';
-const database = db.default.database;
+import * as fb from './../firebase/config';
+const database = fb.default.database;
 
 const addTerm = (data) => {
   database.ref('terms').push(data);

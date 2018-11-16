@@ -3,12 +3,14 @@ import CardList from './components/card-list';
 import Notes from './components/notes';
 import terms from './actions/terms';
 import notes from './actions/notes';
+import users from './actions/users';
 import './App.css';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: null,
       modalIsOpen: false,
       noteModalIsOpen: false,
       terms: {},
@@ -17,12 +19,15 @@ export default class App extends Component {
   }
 
   componentWillMount = () => {
+    users.signInAnon().then((uid) => {
+      this.setState({ uid });
+    });
     terms.getTerms().then((snapshot) => {
       this.setState({ terms: snapshot.val() });
-    })
+    });
     notes.getNotes().then((snapshot) => {
       this.setState({ notes: snapshot.val() });
-    })
+    });
   }
 
   createNewTerm = (information) => {
