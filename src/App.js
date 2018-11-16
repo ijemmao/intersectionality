@@ -26,7 +26,8 @@ export default class App extends Component {
   }
 
   createNewTerm = (information) => {
-    if (information.word && information.definition && information.definition.length > 10) {
+    console.log(information);
+    if (information.term && information.definition && information.definition.length > 10) {
       terms.addTerm(information);
       terms.getTerms().then((snapshot) => {
         this.setState({ terms: snapshot.val() });
