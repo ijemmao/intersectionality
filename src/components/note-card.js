@@ -18,11 +18,11 @@ export default class NoteCard extends Component {
 
   onDrag = (e) => {
     console.log(e);
-    this.setState({ position: { x: e.x, y: e.y }});
+    this.setState({ position: { x: e.clientX, y: e.clientY }});
   }
 
   onStopDrag = (e) => {
-    this.setState({ position: { x: e.clientX - 90, y: e.clientY - 90 }});
+    this.setState({ position: { x: e.clientX * .6 , y: e.clientY * .6}});
   }
 
   render() {
@@ -30,8 +30,7 @@ export default class NoteCard extends Component {
       <div>
         <Draggable
           handle=".note-card"
-          grid={[10, 10]}
-          defaultPosition={{ x: 20, y: 20 }}
+          grid={[1, 1]}
           position={this.state.position}
           onStart={this.onStartDrag}
           onDrag={this.onDrag}
