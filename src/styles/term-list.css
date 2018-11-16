@@ -35,8 +35,9 @@
   float: right;
 }
 
-.cards {
+.terms {
   overflow-y: scroll;
+  height: 100vh;
 }
 
 .submit-term {

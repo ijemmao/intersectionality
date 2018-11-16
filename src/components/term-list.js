@@ -18,7 +18,7 @@ export default class TermList extends Component {
     Modal.setAppElement('body');
   }
 
-  renderCards = () => {
+  renderTerms = () => {
     let terms = [];
     for (let key in this.props.terms) {
       let term = this.props.terms[key];
@@ -83,8 +83,8 @@ export default class TermList extends Component {
             this.props.openModal()
             }} />
           </div>
-          <div className="cards">
-            {this.renderCards()}
+          <div className="terms">
+            {this.renderTerms()}
           </div>
         </div>
     )
