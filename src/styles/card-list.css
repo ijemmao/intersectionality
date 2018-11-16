@@ -2,6 +2,7 @@
   position: relative;
   float: right;
   width: 30vw;
+  padding-left: 20px;
 }
 
 .card-list-header {

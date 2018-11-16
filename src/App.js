@@ -11,7 +11,7 @@ export default class App extends Component {
       noteModalIsOpen: false,
     };
     this.testingData = [{ word: 'ijemma', type: 'person', definition: 'a student at dartmouth college'}, { word: 'dance', definition: 'the act of moving the body to music' }]
-    this.testingNotes = []
+    this.testingNotes = [{ title: 'ijemma', text: 'this is some text about ijemma' }];
   }
 
   createNewTerm = (information) => {
@@ -54,7 +54,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Notes noteCards={this.state.testingNotes} noteModalIsOpen={this.state.noteModalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
+        <Notes noteCards={this.testingNotes} createNewNote={this.createNewNote} noteModalIsOpen={this.state.noteModalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
         <CardList words={this.testingData} createNewTerm={this.createNewTerm} modalIsOpen={this.state.modalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
       </div>
     );

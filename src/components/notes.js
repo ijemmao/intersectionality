@@ -44,16 +44,16 @@ export default class Notes extends Component {
               <input name="text" placeholder="e.g. this is a description" value={this.state.text} onChange={this.handleText}></input>
               <button className="submit-note" onClick={() => {
                 if (this.props.createNewNote({ title: this.state.title, text: this.state.text })) {
-                  this.props.closeModal();
+                  this.props.closeModal('note');
                 }
               }}>submit</button>
             </div>
             <div className="word-instructions-container">
-              <p>Think of the following when adding a new term to the platform:</p>
-              <p>This tool is open to the public! Think about the terms your place here before you add them. This tool is supposed to support the numerous communities that exist.</p>
-              <p>These cards will be publically accessed and cannot be removed unless requested.</p>
-              <p>If you're unable to add your term to the platform, make sure that the definition is long enough and that it hasn't been added already</p>
-              <p>Enjoy</p>
+              <p>Think of the following when adding a new note to the platform:</p>
+              <p>This tool is open to the public! Even though these notes are anonymous, think about the information you place on this board before you add them. This tools is meant to create a support community.</p>
+              <p>These notes will be publically accessed and cannot be removed unless requested.</p>
+              <p>Feel free to add as many notes as you feel necessary and benefical! Don't spam!</p>
+              <p>Have fun!</p>
             </div>
           </div>
         </Modal>
@@ -61,9 +61,8 @@ export default class Notes extends Component {
           <h1>Notes</h1>
           <img src={newNote} alt="new note" className="icon new-note" onClick={() => {
             this.setState({
-              word: '',
-              type: '',
-              definition: '',
+              title: '',
+              text: '',
             });
             this.props.openModal('note')
           }} />
