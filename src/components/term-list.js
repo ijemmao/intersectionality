@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import Card from './card';
+import Term from './term';
 import newNote from './../assets/images/new_note.svg';
 import exit from './../assets/images/exit.svg';
 import './../styles/card-list.css';
 
-export default class CardList extends Component {
+export default class TermList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,8 +21,8 @@ export default class CardList extends Component {
   renderCards = () => {
     let terms = [];
     for (let key in this.props.terms) {
-      let data = this.props.terms[key];
-      terms.push(<Card key={key} id={key} term={data.term} type={data.type} definition={data.definition} />);
+      let term = this.props.terms[key];
+      terms.push(<Term uid={this.props.uid} key={key} id={key} term={term} />)
     }
     return terms;
   }

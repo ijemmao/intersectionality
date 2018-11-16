@@ -18,7 +18,7 @@ export default class Notes extends Component {
     let noteCards = [];
     for (let key in this.props.noteCards) {
       let card = this.props.noteCards[key];
-      noteCards.push(<NoteCard key={key} id={key} title={card.title} text={card.text} x={card.x} y={card.y} />)
+      noteCards.push(<NoteCard uid={this.props.uid} key={key} id={key} card={card} />)
     }
     return noteCards;
   }

@@ -8,8 +8,8 @@ export default class NoteCard extends Component {
     super(props);
     this.state = {
       position: {
-        x: this.props.x,
-        y: this.props.y,
+        x: this.props.card.x,
+        y: this.props.card.y,
       }
     };
   }
@@ -35,8 +35,8 @@ export default class NoteCard extends Component {
           onStop={this.onStopDrag}
         >
           <div className="note-card">
-            <h3 className="note-title">{this.props.title}</h3>
-            <h5 className="note-text">{this.props.text}</h5>
+            <h3 className="note-title">{this.props.card.title}</h3>
+            <h5 className="note-text">{this.props.card.text}</h5>
           </div>
         </Draggable>
       </div>

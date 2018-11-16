@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CardList from './components/card-list';
+import TermList from './components/term-list';
 import Notes from './components/notes';
 import terms from './actions/terms';
 import notes from './actions/notes';
@@ -74,7 +74,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <Notes uid={this.state.uid} noteCards={this.state.notes} createNewNote={this.createNewNote} noteModalIsOpen={this.state.noteModalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
-        <CardList uid={this.state.uid} terms={this.state.terms} createNewTerm={this.createNewTerm} modalIsOpen={this.state.modalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
+        <TermList uid={this.state.uid} terms={this.state.terms} createNewTerm={this.createNewTerm} modalIsOpen={this.state.modalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
       </div>
     );
   }
