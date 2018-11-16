@@ -5,5 +5,9 @@ const addTerm = (data) => {
   database.ref('terms').push(data);
 }
 
-export default { addTerm };
+const getTerms = () => {
+  return database.ref('terms').once('value');
+}
+
+export default { addTerm, getTerms };
 

@@ -3,14 +3,13 @@ import Modal from 'react-modal';
 import Card from './card';
 import newNote from './../assets/images/new_note.svg';
 import exit from './../assets/images/exit.svg';
-import terms from './../actions/terms';
 import './../styles/card-list.css';
 
 export default class CardList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      word: '',
+      term: '',
       type: '',
       definition: '',
     };
@@ -20,9 +19,12 @@ export default class CardList extends Component {
   }
 
   renderCards = () => {
-    return this.props.words.map((data) => {
-      return <Card word={data.word} type={data.type} definition={data.definition} />
-    })
+    let terms = [];
+    for (let key in this.props.terms) {
+      let data = this.props.terms[key];
+      terms.push(<Card term={data.term} type={data.type} definition={data.definition} />);
+    }
+    return terms;
   }
 
   handleWordText = (e) => {
@@ -54,8 +56,6 @@ export default class CardList extends Component {
               <input name="defintion" placeholder="e.g. this is a defintion" value={this.state.definition} onChange={this.handleDefinitionText}></input>
               <button className="submit-term" onClick={() => {
                 if (this.props.createNewTerm({ word: this.state.word, type: this.state.type, definition: this.state.definition })) {
-                  console.log('okokok');
-                  terms.addTerm({ word: this.state.word, type: this.state.type, definition: this.state.definition });
                   this.props.closeModal();
                 }
                 }}>submit</button>
@@ -74,7 +74,7 @@ export default class CardList extends Component {
           <img src={newNote} alt="new note" className="icon new-note" onClick={() => {
             this.setState({
               word: '',
-              type: '',
+              term: '',
               definition: '',
             });
             this.props.openModal()
