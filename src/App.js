@@ -11,6 +11,7 @@ export default class App extends Component {
       modalIsOpen: false,
       noteModalIsOpen: false,
       terms: {},
+      notes: {},
     };
     this.testingNotes = [{ title: 'ijemma', text: 'this is some text about ijemma' }];
   }
