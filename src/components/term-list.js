@@ -70,7 +70,10 @@ export default class TermList extends Component {
           </div>
         </Modal>
         <div className="card-list-header">
-          <h1>Definitions</h1>
+          <div>
+            <h1>Definitions</h1>
+            <h6>Select your identities for anonymous data collection</h6>
+          </div>
           <img src={newNote} alt="new note" className="icon new-note" onClick={() => {
             this.setState({
               term: '',
@@ -78,12 +81,12 @@ export default class TermList extends Component {
               definition: '',
             });
             this.props.openModal()
-          }} />
+            }} />
+          </div>
+          <div className="cards">
+            {this.renderCards()}
+          </div>
         </div>
-        <div className="cards">
-          {this.renderCards()}
-        </div>
-      </div>
     )
   }
 }

@@ -63,7 +63,7 @@ export default class Notes extends Component {
         <div className="notes-header">
           <div>
             <h1>Notes</h1>
-            <h6>Feel free to drag them around!</h6>
+            <h6>Feel free to drag them around</h6>
           </div>
           <img src={newNote} alt="new note" className="icon new-note" onClick={() => {
             this.setState({
