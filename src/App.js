@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CardList from './components/card-list';
 import Notes from './components/notes';
 import terms from './actions/terms';
+import notes from './actions/notes';
 import './App.css';
 
 export default class App extends Component {
@@ -13,12 +14,14 @@ export default class App extends Component {
       terms: {},
       notes: {},
     };
-    this.testingNotes = [{ title: 'ijemma', text: 'this is some text about ijemma' }];
   }
 
   componentWillMount = () => {
     terms.getTerms().then((snapshot) => {
       this.setState({ terms: snapshot.val() });
+    })
+    notes.getNotes().then((snapshot) => {
+      this.setState({ notes: snapshot.val() });
     })
   }
 
@@ -27,7 +30,7 @@ export default class App extends Component {
       terms.addTerm(information);
       terms.getTerms().then((snapshot) => {
         this.setState({ terms: snapshot.val() });
-      })
+      });
       return true;
     }
     console.log('Either the term was not included or the definition was too short');
@@ -35,10 +38,11 @@ export default class App extends Component {
   }
 
   createNewNote = (information) => {
-    let testingNotes = this.testingNotes;
     if (information.text && information.text.length > 5) {
-      testingNotes.push({ title: information.title, text: information.text });
-      this.setState({ testingNotes: testingNotes });
+      notes.addNote(information);
+      notes.getNotes().then((snapshot) => {
+        this.setState({ notes: snapshot.val() });
+      });
       return true;
     }
     console.log('The description for the note is too short');
@@ -63,7 +67,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Notes noteCards={this.testingNotes} createNewNote={this.createNewNote} noteModalIsOpen={this.state.noteModalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
+        <Notes noteCards={this.state.notes} createNewNote={this.createNewNote} noteModalIsOpen={this.state.noteModalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
         <CardList terms={this.state.terms} createNewTerm={this.createNewTerm} modalIsOpen={this.state.modalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
       </div>
     );

@@ -15,9 +15,12 @@ export default class Notes extends Component {
   }
 
   renderNoteCards = () => {
-    return this.props.noteCards.map((card) => {
-      return <NoteCard title={card.title} text={card.text} />
-    })
+    let noteCards = [];
+    for (let key in this.props.noteCards) {
+      let card = this.props.noteCards[key];
+      noteCards.push(<NoteCard title={card.title} text={card.text} />)
+    }
+    return noteCards;
   }
 
   handleTitleText = (e) => {
