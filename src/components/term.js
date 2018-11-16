@@ -8,6 +8,12 @@ export default class Term extends Component {
     this.state = {};
   }
 
+  componentDidMount = () => {
+    if (this.props.term.selection && this.props.term.selection[this.props.uid]) {
+      console.log('this card is selected', this.props.term.term);
+    }
+  }
+
   handleSelection = (e) => {
     let data = Object.assign({ uid: this.props.uid, id: this.props.id, checked: e.target.checked }, this.props.term);
     terms.updateTerm(data);

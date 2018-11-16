@@ -21,7 +21,7 @@ const updateTerm = (data) => {
       value['selection'] = {};
     }
     value.selection[data.uid] = data.checked;
-    return database.ref(`terms/${data.id}`).set({ author: data.author, defintiion: data.definition, term: data.term, type: data.type, selection: value.selection });
+    return database.ref(`terms/${data.id}`).set({ author: data.author, definition: data.definition, term: data.term, type: data.type, selection: value.selection });
   })
 }
 
