@@ -26,13 +26,15 @@ const updateTerm = (data) => {
   })
 }
 
-const cleanWiki = (node, uri) => {
+const cleanWiki = (node, uri, term) => {
   console.log(node.childNodes);
   Array.from(node.childNodes).forEach((child) => {
     if (child.localName && child.localName === 'a') {
       // console.log(child)
-      console.log(child)
       child.href = `${uri}${child.innerText}`
+    } else if (child.localName && child.localName === 'sup') {
+      let link = child.firstChild;
+      link.href= `${uri}${term}${link.hash}`;
     }
   })
 }
@@ -54,7 +56,7 @@ const getWiki = (term) => {
         console.log(el.querySelectorAll('p')[1])
         for (let i = 0; i < allParagraphs.length; i++) { // finding the correct paragraph to show
           if (allParagraphs[i].innerText.toUpperCase().startsWith(term.toUpperCase())) {
-            cleanWiki(allParagraphs[i], uri);
+            cleanWiki(allParagraphs[i], uri, cleanedTerm);
             resolve(allParagraphs[i]);
           }
         }
