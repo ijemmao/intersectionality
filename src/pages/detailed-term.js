@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Discussion from './../components/discussion';
 import terms from './../actions/terms';
+import './../styles/detailed-term.css';
 
 export default class DetailedTerm extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ export default class DetailedTerm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="detailed-container">
         <div className="left-detailed-container">
           this is a detailed page of the term!
         </div>
