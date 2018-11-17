@@ -15,6 +15,7 @@ const getTerm = (id) => {
 }
 
 const updateTerm = (data) => {
+  console.log('clicked the checkbox')
   getTerm(data.id).then((snapshot) => {
     let value = snapshot.val();
     if (!value.selection) {

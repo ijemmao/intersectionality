@@ -1,4 +1,5 @@
 import * as firebase from 'firebase';
+
 const config = {
   apiKey: "AIzaSyC9WnLLwn3uTJsPE3CogK0WLP0Wfz09n8M",
   authDomain: "intersectionality-72dee.firebaseapp.com",
