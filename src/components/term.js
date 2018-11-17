@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as NavLink } from 'react-router-dom';
 import terms from '../actions/terms';
 import './../styles/term.css';
 
@@ -23,12 +24,12 @@ export default class Term extends Component {
   render() {
     return (
       <div className="card">
-        <input id={this.props.id} className="checkbox" type="checkbox" onClick={this.handleSelection} />
-        <div className="card-header">
-          <h2 className="term">{this.props.term.term}</h2>
-          <h3 className="type">{this.props.term.type}</h3>
-        </div>
-        <h5 className="term-definition">{this.props.term.definition}</h5>
+          <input id={this.props.id} className="checkbox" type="checkbox" onClick={this.handleSelection} />
+          <div className="card-header">
+            <h2 className="term">{this.props.term.term}</h2>
+            <h3 className="type">{this.props.term.type}</h3>
+          </div>
+          <h5 className="term-definition">{this.props.term.definition}</h5>
       </div>
     )
   }

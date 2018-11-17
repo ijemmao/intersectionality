@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/home';
+import DetailedTerm from './pages/detailed-term';
 import './App.css';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
 
-  render() {
-    return (
-      <div className="App">
-        <Home />
-      </div>
-    );
-  }
+const App = (props) => {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/term/:id" component={DetailedTerm} />
+        <Route render={() => (<div>post not found</div>)} />
+      </Switch>
+    </Router>
+  )
 }
+
+export default App;
