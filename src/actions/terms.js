@@ -1,4 +1,5 @@
 import * as fb from './../firebase/config';
+import React from 'react';
 import axios from 'axios';
 const database = fb.default.database;
 
@@ -27,9 +28,19 @@ const updateTerm = (data) => {
 }
 
 const getWiki = (term) => {
-  axios.get(`https://en.wikipedia.org/w/api.php?action=parse&page=${term}&origin=*`).then((res) => {
-    console.log(res.data);
+  return new Promise((resolve) => {
+    axios.get(`https://en.wikipedia.org/w/api.php?action=parse&page=${term}&origin=*&format=json`).then((res) => {
+      if (res.data.parse) {
+        let el = document.createElement('html');
+        el.innerHTML = res.data.parse.text['*'];
+        console.log(el.querySelectorAll('p')[1])
+        resolve(el.querySelectorAll('p')[1]);
+      } else { // page doesn't exist
+        resolve(<div>there was nothing</div>);
+      }
+    })
   })
+  
 }
 
 export default { addTerm, getTerms, getTerm, updateTerm, getWiki };

@@ -16,8 +16,13 @@ export default class DetailedTerm extends Component {
     let id = window.location.pathname.split('/')[2];
     terms.getTerm(id).then((snapshot) => {
       let value = snapshot.val();
-      // console.log(`https://en.wikipedia.org/w/api.php?action=parse&page=${value.term}`);
-      terms.getWiki(value.term);
+      terms.getWiki(value.term).then((wikipedia) => {
+        if (wikipedia.props) { // wikipedia page doesn't exist
+          
+        } else {
+          document.querySelector('.wikipedia-body').appendChild(wikipedia);
+        }
+      })
     })
   }
 
