@@ -8,22 +8,26 @@ export default class DetailedTerm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: null,
       uid: null,
       term: null,
       type: null,
       definition: null,
       wikipediaInformation: null,
+      comments: [],
     };
   }
 
   componentWillMount = () => {
     let id = window.location.pathname.split('/')[2];
+    this.setState({ id });
     terms.getTerm(id).then((snapshot) => {
       let value = snapshot.val();
       this.setState({
         term: value.term,
         type: value.type,
         definition: value.definition,
+        comments: value.comments,
       })
       terms.getWiki(value.term).then((wikipedia) => {
         this.setState({ wikipediaInformation: wikipedia });
@@ -57,7 +61,7 @@ export default class DetailedTerm extends Component {
         </div>
         <div className="right-detailed-container">
           {this.state.wikipediaInformation ? this.renderWikipedia() : null}
-          <Discussion />
+          <Discussion id={this.state.id} comments={this.state.comments} />
         </div>
       </div>
     )

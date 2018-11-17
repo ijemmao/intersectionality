@@ -20,7 +20,7 @@ export default class Term extends Component {
   }
 
   handleSelection = (e) => {
-    let data = Object.assign({ uid: this.props.uid, id: this.props.id, checked: e.target.checked }, this.props.term);
+    let data = { uid: this.props.uid, id: this.props.id, checked: e.target.checked };
     terms.updateTerm(data);
   }
 

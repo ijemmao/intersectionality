@@ -21,7 +21,19 @@ const updateTerm = (data) => {
       value['selection'] = {};
     }
     value.selection[data.uid] = data.checked;
-    return database.ref(`terms/${data.id}`).set({ author: data.author, definition: data.definition, term: data.term, type: data.type, selection: value.selection });
+    return database.ref(`terms/${data.id}`).set({ author: value.author, definition: value.definition, term: value.term, type: value.type, selection: value.selection });
+  })
+}
+
+const addComment = (data) => {
+  getTerm(data.id).then((snapshot) => {
+    let value = snapshot.val();
+    if (!value.comments) {
+      value['comments'] = [];
+    }
+    console.log(value.comments);
+    value.comments.push(data.comment);
+    return database.ref(`terms/${data.id}/comments`).set(value.comments);
   })
 }
 
@@ -51,7 +63,9 @@ const getWiki = (term) => {
         }
         let allParagraphs = el.querySelectorAll('p');
         for (let i = 0; i < allParagraphs.length; i++) { // finding the correct paragraph to show
-          if (allParagraphs[i].innerText.toUpperCase().startsWith(term.toUpperCase())) {
+          let firstPhraseCheck = allParagraphs[i].innerText.toUpperCase().startsWith(term.toUpperCase())
+          let secondWord = allParagraphs[i].innerText.split(' ')[1];
+          if (firstPhraseCheck || (secondWord && secondWord.toUpperCase() === term.split(' ')[0].toUpperCase())) {
             cleanWiki(allParagraphs[i], uri, cleanedTerm);
             resolve(allParagraphs[i]);
           }
@@ -64,5 +78,5 @@ const getWiki = (term) => {
   
 }
 
-export default { addTerm, getTerms, getTerm, updateTerm, getWiki };
+export default { addTerm, getTerms, getTerm, updateTerm, getWiki, addComment};
 
