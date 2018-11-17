@@ -8,7 +8,7 @@ export default class DetailedTerm extends Component {
       term: null,
       type: null,
       definition: null,
-      wikipediaText: '',
+      wikipediaInformation: null,
     };
   }
 
@@ -17,13 +17,21 @@ export default class DetailedTerm extends Component {
     terms.getTerm(id).then((snapshot) => {
       let value = snapshot.val();
       terms.getWiki(value.term).then((wikipedia) => {
-        if (wikipedia.props) { // wikipedia page doesn't exist
-          document.querySelector('.wikipedia-body').innerHTML = '<p>No information from Wikipedia</p>';
-        } else {
+        if (!wikipedia.props) {
+          this.setState({ wikipediaInformation: wikipedia });
           document.querySelector('.wikipedia-body').appendChild(wikipedia);
         }
       })
     })
+  }
+
+  renderWikipedia = () => {
+    return (
+      <div className="wikipedia-container">
+        <h1>From Wikipedia</h1>
+        <div className="wikipedia-body"></div>
+      </div>
+    )
   }
 
 
@@ -34,8 +42,10 @@ export default class DetailedTerm extends Component {
           this is a detailed page of the term!
         </div>
         <div className="right-detailed-container">
-          <h1>From Wikipedia</h1>
-          <div className="wikipedia-body"></div>
+          {this.state.wikipediaInformation ? this.renderWikipedia() : null}
+          <div className="discussion-container">
+            <h1>Discussion</h1>
+          </div>
         </div>
       </div>
     )
