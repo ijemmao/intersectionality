@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Discussion from './../components/discussion';
 import terms from './../actions/terms';
+import users from './../actions/users';
 import './../styles/detailed-term.css';
 
 export default class DetailedTerm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: null,
       term: null,
       type: null,
       definition: null,
@@ -18,6 +20,11 @@ export default class DetailedTerm extends Component {
     let id = window.location.pathname.split('/')[2];
     terms.getTerm(id).then((snapshot) => {
       let value = snapshot.val();
+      this.setState({
+        term: value.term,
+        type: value.type,
+        definition: value.definition,
+      })
       terms.getWiki(value.term).then((wikipedia) => {
         if (!wikipedia.props) {
           this.setState({ wikipediaInformation: wikipedia });
@@ -25,6 +32,9 @@ export default class DetailedTerm extends Component {
         }
       })
     })
+    users.signInAnon().then((uid) => {
+      this.setState({ uid });
+    });
   }
 
   renderWikipedia = () => {
