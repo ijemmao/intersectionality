@@ -63,7 +63,9 @@ const getWiki = (term) => {
         }
         let allParagraphs = el.querySelectorAll('p');
         for (let i = 0; i < allParagraphs.length; i++) { // finding the correct paragraph to show
-          if (allParagraphs[i].innerText.toUpperCase().startsWith(term.toUpperCase())) {
+          let firstPhraseCheck = allParagraphs[i].innerText.toUpperCase().startsWith(term.toUpperCase())
+          let secondWord = allParagraphs[i].innerText.split(' ')[1];
+          if (firstPhraseCheck || (secondWord && secondWord.toUpperCase() === term.split(' ')[0].toUpperCase())) {
             cleanWiki(allParagraphs[i], uri, cleanedTerm);
             resolve(allParagraphs[i]);
           }
