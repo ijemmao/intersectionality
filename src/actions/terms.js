@@ -1,5 +1,4 @@
 import * as fb from './../firebase/config';
-import React from 'react';
 import axios from 'axios';
 const database = fb.default.database;
 
@@ -27,8 +26,20 @@ const updateTerm = (data) => {
   })
 }
 
+const cleanWiki = (node, uri) => {
+  console.log(node.childNodes);
+  Array.from(node.childNodes).forEach((child) => {
+    if (child.localName && child.localName === 'a') {
+      // console.log(child)
+      console.log(child)
+      child.href = `${uri}${child.innerText}`
+    }
+  })
+}
+
 const getWiki = (term) => {
   let cleanedTerm = term.replace(/ /, '%20');
+  let uri = `https://en.wikipedia.org/wiki/`;
   return new Promise((resolve, reject) => {
     axios.get(`https://en.wikipedia.org/w/api.php?action=parse&page=${cleanedTerm}&origin=*&format=json`).then((res) => {
       if (res.data.parse) {
@@ -43,6 +54,7 @@ const getWiki = (term) => {
         console.log(el.querySelectorAll('p')[1])
         for (let i = 0; i < allParagraphs.length; i++) { // finding the correct paragraph to show
           if (allParagraphs[i].innerText.toUpperCase().startsWith(term.toUpperCase())) {
+            cleanWiki(allParagraphs[i], uri);
             resolve(allParagraphs[i]);
           }
         }
