@@ -30,7 +30,6 @@ export default class Home extends Component {
   }
 
   createNewTerm = (information) => {
-    console.log(information);
     if (information.term && information.definition && information.definition.length > 10) {
       terms.addTerm(information);
       terms.getTerms().then((snapshot) => {

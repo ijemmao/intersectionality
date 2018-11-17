@@ -3,7 +3,6 @@ import axios from 'axios';
 const database = fb.default.database;
 
 const addTerm = (data) => {
-  console.log('it like that', data);
   database.ref('terms').push(data);
 }
 
@@ -30,7 +29,6 @@ const cleanWiki = (node, uri, term) => {
   console.log(node.childNodes);
   Array.from(node.childNodes).forEach((child) => {
     if (child.localName && child.localName === 'a') {
-      // console.log(child)
       child.href = `${uri}${child.innerText}`
     } else if (child.localName && child.localName === 'sup') {
       let link = child.firstChild;
@@ -46,14 +44,12 @@ const getWiki = (term) => {
     axios.get(`https://en.wikipedia.org/w/api.php?action=parse&page=${cleanedTerm}&origin=*&format=json`).then((res) => {
       if (res.data.parse) {
         let el = document.createElement('html');
-        console.log(el);
         el.innerHTML = res.data.parse.text['*'];
         if (el.querySelector('.redirectMsg')) {
           let redirect = el.querySelector('a').innerText;
           resolve(getWiki(redirect));
         }
         let allParagraphs = el.querySelectorAll('p');
-        console.log(el.querySelectorAll('p')[1])
         for (let i = 0; i < allParagraphs.length; i++) { // finding the correct paragraph to show
           if (allParagraphs[i].innerText.toUpperCase().startsWith(term.toUpperCase())) {
             cleanWiki(allParagraphs[i], uri, cleanedTerm);
