@@ -1,0 +1,6 @@
+.comment-container {
+  padding: 10px;
+  border: 1px dashed #000;
+  width: 45vw;
+  overflow-wrap: break-word;
+}

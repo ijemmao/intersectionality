@@ -58,7 +58,7 @@ export default class TermList extends Component {
                 if (this.props.createNewTerm({ author: this.props.uid, term: this.state.term, type: this.state.type, definition: this.state.definition })) {
                   this.props.closeModal();
                 }
-                }}>submit</button>
+              }}>submit</button>
             </div>
             <div className="word-instructions-container">
               <p>Think of the following when adding a new term to the platform:</p>
@@ -81,12 +81,12 @@ export default class TermList extends Component {
               definition: '',
             });
             this.props.openModal()
-            }} />
-          </div>
-          <div className="terms">
-            {this.renderTerms()}
-          </div>
+          }} />
         </div>
+        <div className="terms">
+          {this.renderTerms()}
+        </div>
+      </div>
     )
   }
 }

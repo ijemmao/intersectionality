@@ -1,0 +1,34 @@
+.discussion-container {
+  height: auto;
+  width: 50vw;
+}
+
+.discussion-text-input {
+  border: 1px solid rgb(99, 99, 99);
+  resize: none;
+  outline: none;
+  margin-bottom: 30px;
+  width: 45vw;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-comment {
+  height: 30px;
+  width: 75px;
+  margin-bottom: 20px;
+  border: 1px solid #000;
+  outline: none;
+  cursor: pointer;
+}
+
+.submit-comment:hover {
+  border: 1px solid rgb(56, 56, 56);
+  background-color: rgb(141, 141, 141);
+  color: #fff;
+}

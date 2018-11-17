@@ -3,7 +3,7 @@
   float: right;
   height: 100vh;
   width: 30vw;
-  padding-left: 20px;
+  padding: 0 20px;
 }
 
 .term-list-header {
