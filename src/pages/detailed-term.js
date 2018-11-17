@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Stats from './../components/stats';
 import Discussion from './../components/discussion';
 import terms from './../actions/terms';
 import users from './../actions/users';
@@ -15,6 +16,7 @@ export default class DetailedTerm extends Component {
       definition: null,
       wikipediaInformation: null,
       comments: [],
+      totalUsers: 0,
     };
   }
 
@@ -39,6 +41,9 @@ export default class DetailedTerm extends Component {
     users.signInAnon().then((uid) => {
       this.setState({ uid });
     });
+    users.getUsers().then((count) => {
+      this.setState({ totalUsers: count });
+    })
   }
 
   renderWikipedia = () => {
@@ -61,6 +66,7 @@ export default class DetailedTerm extends Component {
         </div>
         <div className="right-detailed-container">
           {this.state.wikipediaInformation ? this.renderWikipedia() : null}
+          <Stats id={this.state.id} totalUsers={this.state.totalUsers} />
           <Discussion id={this.state.id} comments={this.state.comments} />
         </div>
       </div>
