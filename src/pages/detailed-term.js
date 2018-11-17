@@ -18,7 +18,7 @@ export default class DetailedTerm extends Component {
       let value = snapshot.val();
       terms.getWiki(value.term).then((wikipedia) => {
         if (wikipedia.props) { // wikipedia page doesn't exist
-          
+          document.querySelector('.wikipedia-body').innerHTML = '<p>No information from Wikipedia</p>';
         } else {
           document.querySelector('.wikipedia-body').appendChild(wikipedia);
         }
