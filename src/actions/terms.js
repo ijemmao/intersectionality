@@ -1,4 +1,5 @@
 import * as fb from './../firebase/config';
+import axios from 'axios';
 const database = fb.default.database;
 
 const addTerm = (data) => {
@@ -25,5 +26,11 @@ const updateTerm = (data) => {
   })
 }
 
-export default { addTerm, getTerms, getTerm, updateTerm };
+const getWiki = (term) => {
+  axios.get(`https://en.wikipedia.org/w/api.php?action=parse&page=${term}&origin=*`).then((res) => {
+    console.log(res.data);
+  })
+}
+
+export default { addTerm, getTerms, getTerm, updateTerm, getWiki };
 

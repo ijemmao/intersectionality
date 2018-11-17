@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import terms from './../actions/terms';
 
 export default class DetailedTerm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: this.props.term.term,
-      type: this.props.term.type,
-      definition: this.props.term.definition,
+      term: null,
+      type: null,
+      definition: null,
       wikipediaText: '',
     };
   }
 
   componentWillMount = () => {
-    axios.get(`https://en.wikipedia.org/w/api.php?action=parse&page=${this.props.term.term}`).then((res) => {
-      console.log(res.parse.text);
+    let id = window.location.pathname.split('/')[2];
+    terms.getTerm(id).then((snapshot) => {
+      let value = snapshot.val();
+      // console.log(`https://en.wikipedia.org/w/api.php?action=parse&page=${value.term}`);
+      terms.getWiki(value.term);
     })
   }
 
