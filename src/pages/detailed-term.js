@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Discussion from './../components/discussion';
 import terms from './../actions/terms';
 
 export default class DetailedTerm extends Component {
@@ -43,9 +44,7 @@ export default class DetailedTerm extends Component {
         </div>
         <div className="right-detailed-container">
           {this.state.wikipediaInformation ? this.renderWikipedia() : null}
-          <div className="discussion-container">
-            <h1>Discussion</h1>
-          </div>
+          <Discussion />
         </div>
       </div>
     )
