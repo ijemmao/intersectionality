@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Comment from './../components/comment';
+import terms from './../actions/terms';
 import './../styles/discussion.css'
 
 export default class Discussion extends Component {
@@ -7,13 +8,19 @@ export default class Discussion extends Component {
     super(props);
     this.state= {
       comment: '',
-      comments: [{ text: 'this is a comment', votes: 0 }],
+      comments: [],
     };
   }
 
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.comments) {
+      this.setState({ comments: nextProps.comments });
+    }
+  }
+
   renderComments = () => {
-    return this.state.comments.map((comment) => {
-      return (<Comment comment={comment} />)
+    return this.state.comments.map((comment, index) => {
+      return (<Comment key={index} comment={comment} />)
     })
   }
 
@@ -27,6 +34,7 @@ export default class Discussion extends Component {
       let comments = this.state.comments;
       comments.push(newComment);
       this.setState({ comment: '', comments: comments });
+      terms.addComment({ id: this.props.id, comment: newComment });
     }
   }
 
