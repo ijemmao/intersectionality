@@ -25,11 +25,13 @@ export default class DetailedTerm extends Component {
         type: value.type,
         definition: value.definition,
       })
+      console.log(value.term)
       terms.getWiki(value.term).then((wikipedia) => {
-        if (!wikipedia.props) {
-          this.setState({ wikipediaInformation: wikipedia });
-          document.querySelector('.wikipedia-body').appendChild(wikipedia);
-        }
+        console.log(wikipedia);
+        this.setState({ wikipediaInformation: wikipedia });
+        document.querySelector('.wikipedia-body').appendChild(wikipedia);
+      }).catch((error) => {
+        console.log(error.error);
       })
     })
     users.signInAnon().then((uid) => {

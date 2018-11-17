@@ -16,7 +16,10 @@ export default class Discussion extends Component {
     return (
       <div className="discussion-container">
         <h1>Discussion</h1>
-        <textarea rows="3" placeholder="Share your thoughts" className="discussion-text-input" />
+        <div className="input-container">
+          <textarea rows="3" placeholder="Share your thoughts" className="discussion-text-input" />
+          <button type="submit" className="submit-comment">Submit</button>
+        </div>
         {this.renderComments()}
       </div>
     )

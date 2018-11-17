@@ -28,15 +28,27 @@ const updateTerm = (data) => {
 }
 
 const getWiki = (term) => {
-  return new Promise((resolve) => {
-    axios.get(`https://en.wikipedia.org/w/api.php?action=parse&page=${term}&origin=*&format=json`).then((res) => {
+  let cleanedTerm = term.replace(/ /, '%20');
+  return new Promise((resolve, reject) => {
+    axios.get(`https://en.wikipedia.org/w/api.php?action=parse&page=${cleanedTerm}&origin=*&format=json`).then((res) => {
       if (res.data.parse) {
         let el = document.createElement('html');
+        console.log(el);
         el.innerHTML = res.data.parse.text['*'];
+        if (el.querySelector('.redirectMsg')) {
+          let redirect = el.querySelector('a').innerText;
+          resolve(getWiki(redirect));
+        }
+        let allParagraphs = el.querySelectorAll('p');
         console.log(el.querySelectorAll('p')[1])
-        resolve(el.querySelectorAll('p')[1]);
+        for (let i = 0; i < allParagraphs.length; i++) { // finding the correct paragraph to show
+          if (allParagraphs[i].innerText.toUpperCase().startsWith(term.toUpperCase())) {
+            resolve(allParagraphs[i]);
+          }
+        }
+        console.log('huh????', term)
       } else { // page doesn't exist
-        resolve(<div>there was nothing</div>);
+        reject({ error: 'page doesn\'t exist'})
       }
     })
   })
