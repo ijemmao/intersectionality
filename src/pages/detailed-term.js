@@ -27,7 +27,6 @@ export default class DetailedTerm extends Component {
       })
       console.log(value.term)
       terms.getWiki(value.term).then((wikipedia) => {
-        console.log(wikipedia);
         this.setState({ wikipediaInformation: wikipedia });
         document.querySelector('.wikipedia-body').appendChild(wikipedia);
       }).catch((error) => {
