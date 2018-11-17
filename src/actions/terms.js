@@ -46,7 +46,6 @@ const getWiki = (term) => {
             resolve(allParagraphs[i]);
           }
         }
-        console.log('huh????', term)
       } else { // page doesn't exist
         reject({ error: 'page doesn\'t exist'})
       }
