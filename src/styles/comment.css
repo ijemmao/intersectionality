@@ -2,5 +2,6 @@
   padding: 10px;
   border: 1px dashed #000;
   width: 45vw;
+  margin-bottom: 20px;
   overflow-wrap: break-word;
 }
