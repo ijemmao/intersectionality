@@ -5,11 +5,15 @@ import './../styles/discussion.css'
 export default class Discussion extends Component {
   constructor(props) {
     super(props);
-    this.state= {};
+    this.state= {
+      comments: [{ text: 'this is a comment', votes: 0 }],
+    };
   }
 
   renderComments = () => {
-    return (<Comment />)
+    return this.state.comments.map((comment) => {
+      return (<Comment comment={comment} />)
+    })
   }
 
   render() {

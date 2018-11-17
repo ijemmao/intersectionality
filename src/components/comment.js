@@ -10,7 +10,7 @@ export default class Comment extends Component {
   render() {
     return (
       <div className="comment-container">
-        this is a comment it might have some basicall funcionality like upvoting only
+        {this.props.comment.text}
       </div>
     )
   }
