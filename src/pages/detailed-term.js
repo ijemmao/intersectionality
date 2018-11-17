@@ -51,7 +51,9 @@ export default class DetailedTerm extends Component {
     return (
       <div className="detailed-container">
         <div className="left-detailed-container">
-          this is a detailed page of the term!
+          <h1>{this.state.term}</h1>
+          <h2>{this.state.type}</h2>
+          <h4>{this.state.definition}</h4>
         </div>
         <div className="right-detailed-container">
           {this.state.wikipediaInformation ? this.renderWikipedia() : null}
