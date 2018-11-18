@@ -47,7 +47,7 @@ export default class TermList extends Component {
         <Modal
           isOpen={this.props.modalIsOpen}
           onRequestClose={this.props.closeModal}
-          contentLabel="Example Modal"
+          contentLabel="Add terms"
         >
           <img src={exit} alt="exit" className="icon exit" onClick={this.props.closeModal} />
           <div className="modal-content-container">
