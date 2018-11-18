@@ -1,0 +1,44 @@
+.modal-content-container {
+  display: flex;
+}
+
+.word-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  margin-top: 25vh;
+}
+
+.word-instructions-container {
+  width: 40vw;
+  margin-top: 25vh;
+  margin-left: 10vw;
+}
+
+.modal-introduction-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-top: 10vw;
+}
+
+.modal-introduction-container h3 {
+  margin: 0;
+}
+
+.modal-introduction-instructions-container {
+  margin-top: 40px;
+  width: 60vw;
+}
+
+.modal-introduction-instructions-container p {
+  margin-bottom: 30px;
+}
+
+.start-button {
+  height: 30px;
+  width: 75px;
+  border: 1px dashed #000;
+  cursor: pointer;
+}

@@ -4,21 +4,28 @@ const auth = fb.default.auth;
 const database = fb.default.database;
 
 const addUser = (uid) => {
-  database.ref('users').once('value').then((snapshot) => {
-    let values = snapshot.val();
-    let add = true;
-    if (!values) {
-      values = [];
-    }
-    values.forEach((value) => {
-      if (value === uid) {
+  return new Promise((resolve) => {
+    database.ref('users').once('value').then((snapshot) => {
+      let values = snapshot.val();
+      let add = true;
+      let addValue = 0;
+      if (!values) {
+        values = [];
+      }
+
+      if (values[uid] !== null && values[uid] !== undefined) {
+        addValue = values[uid] + 1;
+        values[uid] += addValue;
         add = false;
       }
+
+      if (add) {
+        addValue = 1;
+        values[uid] = addValue;
+      }
+      database.ref('users').set(values);
+      resolve(addValue);
     });
-    if (add) {
-      values.push(uid);
-    }
-    return database.ref('users').set(values);
   });
 };
 
@@ -32,8 +39,9 @@ const signInAnon = () => {
     auth.onAuthStateChanged((user) => {
       if (user) { // anon
         const uid = user.uid;
-        addUser(uid);
-        resolve(uid);
+        addUser(uid).then((added) => {
+          resolve({ uid, added });
+        });
       } else {
         // user logged out
       }

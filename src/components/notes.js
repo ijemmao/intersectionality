@@ -39,7 +39,7 @@ export default class Notes extends Component {
         <Modal
           isOpen={this.props.noteModalIsOpen}
           onRequestClose={this.props.closeModal}
-          contentLabel="Example Modal"
+          contentLabel="Add notes"
         >
           <img src={exit} alt="exit" className="icon exit" onClick={() => this.props.closeModal('note')} />
           <div className="modal-content-container">

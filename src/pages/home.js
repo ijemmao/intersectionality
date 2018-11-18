@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import Modal from 'react-modal';
 import Notes from './../components/notes';
 import TermList from './../components/term-list';
 import terms from './../actions/terms';
 import notes from './../actions/notes';
 import users from './../actions/users';
+import exit from './../assets/images/exit.svg';
+import './../styles/modal.css';
 
 export default class Home extends Component {
   constructor(props) {
@@ -12,14 +15,18 @@ export default class Home extends Component {
       uid: null,
       modalIsOpen: false,
       noteModalIsOpen: false,
+      welcomeModalIsOpen: false,
       terms: {},
       notes: {},
     };
   }
 
   componentWillMount = () => {
-    users.signInAnon().then((uid) => {
-      this.setState({ uid });
+    users.signInAnon().then((data) => {
+      if (data.added === 1) {
+        this.setState({ welcomeModalIsOpen: true });
+      }
+      this.setState({ uid: data.uid });
     });
     terms.getTerms().then((snapshot) => {
       this.setState({ terms: snapshot.val() });
@@ -69,9 +76,41 @@ export default class Home extends Component {
     }
   }
 
+  closeWelcomeModal = () => {
+    this.setState({ welcomeModalIsOpen: false });
+  }
+
   render() {
     return (
       <React.Fragment>
+        <Modal
+          isOpen={this.state.welcomeModalIsOpen}
+          onRequestClose={this.state.closeWelcomeModal}
+          contentLabel="Welcome Modal"
+        >
+          <img src={exit} alt="exit" className="icon exit" onClick={this.closeWelcomeModal} />
+          <div className="modal-introduction-container">
+            <h1>Welcome to the Intersectionality Platform</h1>
+            <h3>An online experience to connect students to learning materials and each other</h3>
+            <div className="modal-introduction-instructions-container">
+              <p>
+                This platform has been created for students at Dartmouth College
+                to interact closely with the learning materials introduced in their #MeToo: Intersectionality class.
+              </p>
+              <p>
+                There are several features included in this website that will
+                allow students to further conversations outside of the classroom.
+              </p>
+              <p>
+                Notes - Students can add anonymous notes concerning anything introduced in class. <br />
+                Terms - There{'\''}s a plethora of identities that exist. This list is great place for students to curate identities they know of or even use!
+                Discussions - For each term, there{'\''}s a discussion section that give students the opportunity to ask questions about that given term.
+              </p>
+              <p>Be kind, be open-minded, and have fun!</p>
+              <button className="start-button" onClick={this.closeWelcomeModal}>Let{'\''}s go</button>
+            </div>
+          </div>
+        </Modal>
         <Notes
           uid={this.state.uid}
           noteCards={this.state.notes}
