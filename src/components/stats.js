@@ -19,6 +19,9 @@ export default class Stats extends Component {
 
   calculateStat = () => {
     const percentage = (this.state.stat / this.props.totalUsers) * 100;
+    if (Number.isNaN(percentage)) {
+      return 'Not enough data to show statistics';
+    }
     return `${percentage}% of users of this platform either use or identify with this term`;
   }
 

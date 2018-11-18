@@ -5,6 +5,7 @@ import TermList from './../components/term-list';
 import terms from './../actions/terms';
 import notes from './../actions/notes';
 import users from './../actions/users';
+import questions from './../actions/questions';
 import exit from './../assets/images/exit.svg';
 import './../styles/modal.css';
 
@@ -15,9 +16,11 @@ export default class Home extends Component {
       uid: null,
       modalIsOpen: false,
       noteModalIsOpen: false,
+      questionModalIsOpen: false,
       welcomeModalIsOpen: false,
       terms: {},
       notes: {},
+      questions: {},
     };
   }
 
@@ -60,9 +63,23 @@ export default class Home extends Component {
     return false;
   }
 
+  createNewQuestion = (information) => {
+    if (information.question && information.question.length > 5) {
+      questions.addQuestion(information);
+      questions.getQuestions().then((snapshot) => {
+        this.setState({ questions: snapshot.val() });
+      });
+      return true;
+    }
+    console.log('The question was too short');
+    return false;
+  }
+
   openModal = (modal) => {
     if (modal === 'note') {
       this.setState({ noteModalIsOpen: true });
+    } else if (modal === 'question') {
+      this.setState({ questionModalIsOpen: true });
     } else {
       this.setState({ modalIsOpen: true });
     }
@@ -71,6 +88,8 @@ export default class Home extends Component {
   closeModal = (modal) => {
     if (modal === 'note') {
       this.setState({ noteModalIsOpen: false });
+    } else if (modal === 'question') {
+      this.setState({ questionModalIsOpen: false });
     } else {
       this.setState({ modalIsOpen: false });
     }
@@ -95,18 +114,19 @@ export default class Home extends Component {
             <div className="modal-introduction-instructions-container">
               <p>
                 This platform has been created for students at Dartmouth College
-                to interact closely with the learning materials introduced in their #MeToo: Intersectionality class.
+                to further conversations surrounding the topic of the #MeToo movement and intersectionality.
               </p>
               <p>
-                There are several features included in this website that will
-                allow students to further conversations outside of the classroom.
+                There are several features that have been included in this website that will
+                give students the opportunities to interact with one another.
               </p>
               <p>
-                Notes - Students can add anonymous notes concerning anything introduced in class. <br />
-                Terms - There{'\''}s a plethora of identities that exist. This list is great place for students to curate identities they know of or even use!
-                Discussions - For each term, there{'\''}s a discussion section that give students the opportunity to ask questions about that given term.
+                Notes - Students can add anonymous notes that stay within the theme of the platform <br />
+                Terms - There{'\''}s a pletora of identiteis that exist. This list is great place for students to curate a list of terms they know of or even use<br />
+                Checkmarks - Students can anonymously check terms that use or identify with, so the data can be showcased to the entire platform.<br />
+                Discussions - For each term, there{'\''}s a discussion section that give students the opportunity to ask questions or comment on that specific term.
               </p>
-              <p>Be kind, be open-minded, and have fun!</p>
+              <p>Most importantly, be kind, respectful, and open-minded</p>
               <button className="start-button" onClick={this.closeWelcomeModal}>Let{'\''}s go</button>
             </div>
           </div>
@@ -114,8 +134,11 @@ export default class Home extends Component {
         <Notes
           uid={this.state.uid}
           noteCards={this.state.notes}
+          questions={this.state.questions}
           createNewNote={this.createNewNote}
+          createNewQuestion={this.createNewQuestion}
           noteModalIsOpen={this.state.noteModalIsOpen}
+          questionModalIsOpen={this.state.questionModalIsOpen}
           openModal={this.openModal}
           closeModal={this.closeModal}
         />

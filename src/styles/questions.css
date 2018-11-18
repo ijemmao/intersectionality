@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700');
+@import url('./notes.css');
+
+.questions-container {
+  font-family: 'Playfair Display', sans-serif;
+}
+
+.questions-header {
+  display: flex;
+  align-items: center;
+}
+
+.question {
+  height: auto;
+  width: 30vw;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.questions-navigation {
+  height: 20px;
+  width: 40px;
+  margin-right: 10px;
+  border: 1px solid rgb(79, 79, 79);
+  cursor: pointer;
+  outline: none;
+}

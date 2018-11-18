@@ -8,8 +8,8 @@ export default class Term extends Component {
     this.state = {};
   }
 
-  componentDidMount = () => {
-    if (this.props.term.selection && this.props.term.selection[this.props.uid]) {
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.term.selection && nextProps.term.selection[nextProps.uid]) {
       const checkbox = document.querySelector(`#${this.props.id}.checkbox`);
       checkbox.checked = true;
     }
@@ -28,7 +28,7 @@ export default class Term extends Component {
     return (
       <div className="card">
         <input id={this.props.id} className="checkbox" type="checkbox" onClick={this.handleSelection} />
-        <span onClick={this.handleDetail} role="button" tabIndex={0}>
+        <span className="card-body" onClick={this.handleDetail} role="button" tabIndex={0}>
           <div className="card-header">
             <h2 className="term">{this.props.term.term}</h2>
             <h3 className="type">{this.props.term.type}</h3>

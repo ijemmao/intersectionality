@@ -20,7 +20,7 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
-  margin-top: 10vw;
+  margin-top: 8vw;
 }
 
 .modal-introduction-container h3 {
@@ -29,7 +29,7 @@
 
 .modal-introduction-instructions-container {
   margin-top: 40px;
-  width: 60vw;
+  width: 50vw;
 }
 
 .modal-introduction-instructions-container p {
