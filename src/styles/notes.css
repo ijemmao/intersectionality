@@ -12,6 +12,7 @@
 
 .submit-note {
   height: 35px;
-  width: 100px;
+  width: fit-content;
+  padding: 0 10px;
   border: 1px solid rgb(75, 75, 75);
 }

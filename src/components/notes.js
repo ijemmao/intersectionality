@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import NoteCard from './note-card';
+import Questions from './questions';
 import exit from './../assets/images/exit.svg';
 import newNote from './../assets/images/new_note.svg';
 import './../styles/notes.css';
@@ -14,6 +15,10 @@ export default class Notes extends Component {
     };
   }
 
+
+  componentWillReceiveProps = (nextProps) => {
+    console.log(nextProps);
+  }
   handleTitleText = (e) => {
     this.setState({ title: e.target.value });
   }
@@ -95,6 +100,14 @@ export default class Notes extends Component {
             }}
           />
         </div>
+        <Questions
+          uid={this.props.uid}
+          questions={this.props.questions}
+          createNewQuestion={this.props.createNewQuestion}
+          openModal={this.props.openModal}
+          closeModal={this.props.closeModal}
+          questionModalIsOpen={this.props.questionModalIsOpen}
+        />
         <div>
           {this.renderNoteCards()}
         </div>

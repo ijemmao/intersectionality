@@ -1,0 +1,10 @@
+@import url('./notes.css');
+
+.questions-navigation {
+  height: 20px;
+  width: 40px;
+  margin-right: 10px;
+  border: 1px solid rgb(79, 79, 79);
+  cursor: pointer;
+  outline: none;
+}

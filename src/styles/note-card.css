@@ -6,6 +6,7 @@
   width: 15vw;
   padding: 0 20px;
   overflow-wrap: break-word;
+  background-color: white;
   cursor: pointer;
   animation: fadein .5s;
 }

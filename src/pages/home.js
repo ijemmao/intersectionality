@@ -5,6 +5,7 @@ import TermList from './../components/term-list';
 import terms from './../actions/terms';
 import notes from './../actions/notes';
 import users from './../actions/users';
+import questions from './../actions/questions';
 import exit from './../assets/images/exit.svg';
 import './../styles/modal.css';
 
@@ -15,9 +16,11 @@ export default class Home extends Component {
       uid: null,
       modalIsOpen: false,
       noteModalIsOpen: false,
+      questionModalIsOpen: false,
       welcomeModalIsOpen: false,
       terms: {},
       notes: {},
+      questions: {},
     };
   }
 
@@ -60,9 +63,23 @@ export default class Home extends Component {
     return false;
   }
 
+  createNewQuestion = (information) => {
+    if (information.question && information.question.length > 5) {
+      questions.addQuestion(information);
+      questions.getQuestions().then((snapshot) => {
+        this.setState({ questions: snapshot.val() });
+      });
+      return true;
+    }
+    console.log('The question was too short');
+    return false;
+  }
+
   openModal = (modal) => {
     if (modal === 'note') {
       this.setState({ noteModalIsOpen: true });
+    } else if (modal === 'question') {
+      this.setState({ questionModalIsOpen: true });
     } else {
       this.setState({ modalIsOpen: true });
     }
@@ -71,6 +88,8 @@ export default class Home extends Component {
   closeModal = (modal) => {
     if (modal === 'note') {
       this.setState({ noteModalIsOpen: false });
+    } else if (modal === 'question') {
+      this.setState({ questionModalIsOpen: false });
     } else {
       this.setState({ modalIsOpen: false });
     }
@@ -115,8 +134,11 @@ export default class Home extends Component {
         <Notes
           uid={this.state.uid}
           noteCards={this.state.notes}
+          questions={this.state.questions}
           createNewNote={this.createNewNote}
+          createNewQuestion={this.createNewQuestion}
           noteModalIsOpen={this.state.noteModalIsOpen}
+          questionModalIsOpen={this.state.questionModalIsOpen}
           openModal={this.openModal}
           closeModal={this.closeModal}
         />
