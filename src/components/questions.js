@@ -88,7 +88,7 @@ export default class Questions extends Component {
 
   render() {
     return (
-      <div>
+      <div className="questions-container">
         <Modal
           isOpen={this.props.questionModalIsOpen}
           onRequestClose={this.props.closeModal}

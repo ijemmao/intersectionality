@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700');
 @import url('./notes.css');
+
+.questions-container {
+  font-family: 'Playfair Display', sans-serif;
+}
 
 .questions-header {
   display: flex;
