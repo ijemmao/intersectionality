@@ -95,18 +95,18 @@ export default class Home extends Component {
             <div className="modal-introduction-instructions-container">
               <p>
                 This platform has been created for students at Dartmouth College
-                to interact closely with the learning materials introduced in their #MeToo: Intersectionality class.
+                to further conversations surrounding the topic of the #MeToo movement and intersectionality.
               </p>
               <p>
-                There are several features included in this website that will
-                allow students to further conversations outside of the classroom.
+                There are several features that have been included in this website that will
+                give students the opportunities to interact with one another.
               </p>
               <p>
-                Notes - Students can add anonymous notes concerning anything introduced in class. <br />
-                Terms - There{'\''}s a plethora of identities that exist. This list is great place for students to curate identities they know of or even use!
-                Discussions - For each term, there{'\''}s a discussion section that give students the opportunity to ask questions about that given term.
+                Notes - Students can add anonymous notes that stay within the theme of the platform <br />
+                Terms - There{'\''}s a pletora of identiteis that exist. This list is great place for students to curate a list of terms they know of or even use<br />
+                Discussions - For each term, there{'\''}s a discussion section that give students the opportunity to ask questions or comment on that specific term.
               </p>
-              <p>Be kind, be open-minded, and have fun!</p>
+              <p>Most importantly, be kind, respectful, and open-minded</p>
               <button className="start-button" onClick={this.closeWelcomeModal}>Let{'\''}s go</button>
             </div>
           </div>

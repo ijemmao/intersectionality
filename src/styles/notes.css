@@ -13,4 +13,5 @@
 .submit-note {
   height: 35px;
   width: 100px;
+  border: 1px dashed #000;
 }

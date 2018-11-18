@@ -61,7 +61,7 @@ export default class Notes extends Component {
                   }
                 }}
               >
-                submit
+                Submit Note
               </button>
             </div>
             <div className="word-instructions-container">

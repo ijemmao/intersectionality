@@ -68,7 +68,7 @@ export default class TermList extends Component {
                   }
                 }}
               >
-                submit
+                Submit Term
               </button>
             </div>
             <div className="word-instructions-container">
@@ -76,7 +76,7 @@ export default class TermList extends Component {
               <p>This tool is open to the public! Think about the terms your place here before you add them. This tool is supposed to support the numerous communities that exist.</p>
               <p>These cards will be publically accessed and cannot be removed unless requested.</p>
               <p>If you{'\''}re unable to add your term to the platform, make sure that the definition is long enough and that it hasn{'\''}t been added already</p>
-              <p>Enjoy</p>
+              <p>Have fun!</p>
             </div>
           </div>
         </Modal>

@@ -64,6 +64,7 @@ export default class DetailedTerm extends Component {
           <h2>{this.state.type}</h2>
           <h4>{this.state.definition}</h4>
         </div>
+        <div className="vertical-divider" />
         <div className="right-detailed-container">
           {this.state.wikipediaInformation ? this.renderWikipedia() : null}
           <Stats uid={this.state.uid} id={this.state.id} totalUsers={this.state.totalUsers} />
