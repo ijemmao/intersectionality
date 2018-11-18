@@ -14,16 +14,14 @@ const addUser = (uid) => {
       }
 
       if (values[uid] !== null && values[uid] !== undefined) {
-        addValue = values[uid] + 1;
-        values[uid] += addValue;
+        addValue = 2;
         add = false;
       }
 
       if (add) {
         addValue = 1;
-        values[uid] = addValue;
       }
-      database.ref('users').set(values);
+      database.ref(`users/${uid}`).set(addValue);
       resolve(addValue);
     });
   });

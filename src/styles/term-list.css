@@ -28,5 +28,5 @@
 .submit-term {
   height: 35px;
   width: 100px;
-  border: 1px dashed #000;
+  border: 1px solid rgb(75, 75, 75);
 }

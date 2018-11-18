@@ -8,8 +8,8 @@ export default class Term extends Component {
     this.state = {};
   }
 
-  componentDidMount = () => {
-    if (this.props.term.selection && this.props.term.selection[this.props.uid]) {
+  componentWillReceiveProps = (nextProps) => {
+    if (nextProps.term.selection && nextProps.term.selection[nextProps.uid]) {
       const checkbox = document.querySelector(`#${this.props.id}.checkbox`);
       checkbox.checked = true;
     }
