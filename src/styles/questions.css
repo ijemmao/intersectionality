@@ -1,5 +1,16 @@
 @import url('./notes.css');
 
+.questions-header {
+  display: flex;
+  align-items: center;
+}
+
+.question {
+  height: 30px;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
 .questions-navigation {
   height: 20px;
   width: 40px;

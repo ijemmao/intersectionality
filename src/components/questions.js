@@ -10,36 +10,44 @@ export default class Questions extends Component {
     super(props);
     this.state = {
       text: '',
-      questions: [
-        // 'What does #MeToo mean to you?',
-        // 'How does one\'s identity come into play when talking about sexual harassment or assault?',
-        // 'What are your opinions on how institutions like Dartmouth handle sexual asssult?',
-        // 'Do you think there\'s a group of people who bear the responsiblity and power to end sexual harassment?',
-      ],
+      questions: [],
       currentIndex: 0,
     };
   }
 
-  componentDidMount = () => {
+  componentWillMount = () => {
     questions.getQuestions().then((snapshot) => {
-      const cleanedQuestions = this.convertQuestions(snapshot.questions);
-      this.setState({ questions: cleanedQuestions });
+      let cleanedQuestions = this.convertQuestions(snapshot.val());
+      if (cleanedQuestions.length === 0) {
+        const tempQuestions = [
+          'What does #MeToo mean to you?',
+          'How does one\'s identity come into play when talking about sexual harassment or assault?',
+          'What are your opinions on how institutions like Dartmouth handle sexual asssult?',
+          'Do you think there\'s a group of people who bear the responsiblity and power to end sexual harassment?',
+        ];
+
+        tempQuestions.forEach((q) => {
+          questions.addQuestion({ author: this.props.uid, question: q });
+        });
+
+        questions.getQuestions().then((ss) => {
+          cleanedQuestions = this.convertQuestions(ss.val());
+          this.setState({ questions: cleanedQuestions });
+        });
+      } else {
+        this.setState({ questions: cleanedQuestions });
+      }
     });
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    console.log(nextProps);
-    if (nextProps.questions) {
-      const cleanedQuestions = this.convertQuestions(nextProps.questions);
-      this.setState({ questions: cleanedQuestions });
-    }
-  }
-
   convertQuestions = (qs) => {
-    console.log(qs);
-    const entries = Object.entries(qs);
-    console.log(entries);
-    return qs;
+    const entries = [];
+    for (const index in qs) {
+      if (Object.prototype.hasOwnProperty.call(qs, index)) {
+        entries.push(qs[index]);
+      }
+    }
+    return entries;
   }
 
   goBack = () => {
@@ -51,7 +59,7 @@ export default class Questions extends Component {
   }
 
   goForward = () => {
-    let index = this.state.currentIndex + 1;
+    let index = (this.state.currentIndex + 1);
     if (index === this.state.questions.length) {
       index = 0;
     }
@@ -63,9 +71,11 @@ export default class Questions extends Component {
   }
 
   renderQuestion = () => {
-    return (
-      <p>{this.state.questions[this.state.currentIndex]}</p>
-    );
+    if (this.state.questions.length > this.state.currentIndex) {
+      return (
+        <p className="question">{this.state.questions[this.state.currentIndex].question}</p>
+      );
+    } return null;
   }
 
   render() {
@@ -89,6 +99,12 @@ export default class Questions extends Component {
                     question: this.state.text,
                   })) {
                     this.props.closeModal('question');
+                    setTimeout(() => {
+                      questions.getQuestions().then((snapshot) => {
+                        const cleanedQuestions = this.convertQuestions(snapshot.val());
+                        this.setState({ questions: cleanedQuestions });
+                      });
+                    }, 2);
                   }
                 }}
               >
@@ -108,21 +124,25 @@ export default class Questions extends Component {
             </div>
           </div>
         </Modal>
-        <h4>Questions to Think About</h4>
+        <div className="questions-header">
+          <h4>Questions to Think About</h4>
+          <img
+            src={newNote}
+            alt="new questions"
+            className="icon new-note"
+            onClick={() => {
+              this.setState({
+                text: '',
+              });
+              this.props.openModal('question');
+            }}
+          />
+        </div>
         {this.renderQuestion()}
-        <img
-          src={newNote}
-          alt="new questions"
-          className="icon new-note"
-          onClick={() => {
-            this.setState({
-
-            });
-            this.props.openModal('question');
-          }}
-        />
-        <button className="questions-navigation" onClick={this.goBack}>{'<'}</button>
-        <button className="questions-navigation" onClick={this.goForward}>{'>'}</button>
+        <span>
+          <button className="questions-navigation" onClick={this.goBack}>{'<'}</button>
+          <button className="questions-navigation" onClick={this.goForward}>{'>'}</button>
+        </span>
       </div>
     );
   }
