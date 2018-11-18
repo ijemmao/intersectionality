@@ -1,7 +1,6 @@
 .card {
   font-family: 'Playfair Display', sans-serif;
   background-color: rgb(255, 208, 119);
-  width: 30vw;
   padding: 0 0 10px 10px;
   cursor: pointer;
   border: 1px rgb(70, 52, 20) dashed;

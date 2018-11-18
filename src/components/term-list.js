@@ -18,15 +18,6 @@ export default class TermList extends Component {
     Modal.setAppElement('body');
   }
 
-  renderTerms = () => {
-    let terms = [];
-    for (let key in this.props.terms) {
-      let term = this.props.terms[key];
-      terms.push(<Term uid={this.props.uid} key={key} id={key} term={term} />)
-    }
-    return terms;
-  }
-
   handleWordText = (e) => {
     this.setState({ term: e.target.value });
   }
@@ -37,6 +28,17 @@ export default class TermList extends Component {
 
   handleDefinitionText = (e) => {
     this.setState({ definition: e.target.value });
+  }
+
+  renderTerms = () => {
+    const terms = [];
+    for (const key in this.props.terms) {
+      if (Object.prototype.hasOwnProperty.call(this.props.terms, key)) {
+        const term = this.props.terms[key];
+        terms.push(<Term uid={this.props.uid} key={key} id={key} term={term} />);
+      }
+    }
+    return terms;
   }
 
   render() {
@@ -51,20 +53,29 @@ export default class TermList extends Component {
           <div className="modal-content-container">
             <div className="word-input-container">
               <h1>New Term</h1>
-              <input name="word" placeholder="e.g. word" value={this.state.term} onChange={this.handleWordText}></input>
-              <input name="word-type" placeholder="e.g. noun" value={this.state.type} onChange={this.handleTypeText}></input>
-              <input name="defintion" placeholder="e.g. this is a defintion" value={this.state.definition} onChange={this.handleDefinitionText}></input>
-              <button className="submit-term" onClick={() => {
-                if (this.props.createNewTerm({ author: this.props.uid, term: this.state.term, type: this.state.type, definition: this.state.definition })) {
-                  this.props.closeModal();
-                }
-              }}>submit</button>
+              <input name="word" placeholder="e.g. word" value={this.state.term} onChange={this.handleWordText} />
+              <input name="word-type" placeholder="e.g. noun" value={this.state.type} onChange={this.handleTypeText} />
+              <input name="defintion" placeholder="e.g. this is a defintion" value={this.state.definition} onChange={this.handleDefinitionText} />
+              <button className="submit-term"
+                onClick={() => {
+                  if (this.props.createNewTerm({
+                    author: this.props.uid,
+                    term: this.state.term,
+                    type: this.state.type,
+                    definition: this.state.definition,
+                  })) {
+                    this.props.closeModal();
+                  }
+                }}
+              >
+                submit
+              </button>
             </div>
             <div className="word-instructions-container">
               <p>Think of the following when adding a new term to the platform:</p>
               <p>This tool is open to the public! Think about the terms your place here before you add them. This tool is supposed to support the numerous communities that exist.</p>
               <p>These cards will be publically accessed and cannot be removed unless requested.</p>
-              <p>If you're unable to add your term to the platform, make sure that the definition is long enough and that it hasn't been added already</p>
+              <p>If you{'\''}re unable to add your term to the platform, make sure that the definition is long enough and that it hasn{'\''}t been added already</p>
               <p>Enjoy</p>
             </div>
           </div>
@@ -74,19 +85,24 @@ export default class TermList extends Component {
             <h1>Terms</h1>
             <h6>Select your identities for anonymous data collection</h6>
           </div>
-          <img src={newNote} alt="new note" className="icon new-note" onClick={() => {
-            this.setState({
-              term: '',
-              type: '',
-              definition: '',
-            });
-            this.props.openModal()
-          }} />
+          <img
+            src={newNote}
+            className="icon new-note"
+            alt="new note"
+            onClick={() => {
+              this.setState({
+                term: '',
+                type: '',
+                definition: '',
+              });
+              this.props.openModal();
+            }}
+          />
         </div>
         <div className="terms">
           {this.renderTerms()}
         </div>
       </div>
-    )
+    );
   }
 }

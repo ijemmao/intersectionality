@@ -10,7 +10,7 @@ export default class Term extends Component {
 
   componentDidMount = () => {
     if (this.props.term.selection && this.props.term.selection[this.props.uid]) {
-      let checkbox = document.querySelector(`#${this.props.id}.checkbox`);
+      const checkbox = document.querySelector(`#${this.props.id}.checkbox`);
       checkbox.checked = true;
     }
   }
@@ -20,7 +20,7 @@ export default class Term extends Component {
   }
 
   handleSelection = (e) => {
-    let data = { uid: this.props.uid, id: this.props.id, checked: e.target.checked };
+    const data = { uid: this.props.uid, id: this.props.id, checked: e.target.checked };
     terms.updateTerm(data);
   }
 
@@ -28,7 +28,7 @@ export default class Term extends Component {
     return (
       <div className="card">
         <input id={this.props.id} className="checkbox" type="checkbox" onClick={this.handleSelection} />
-        <span onClick={this.handleDetail}>
+        <span onClick={this.handleDetail} role="button" tabIndex={0}>
           <div className="card-header">
             <h2 className="term">{this.props.term.term}</h2>
             <h3 className="type">{this.props.term.type}</h3>
@@ -36,6 +36,6 @@ export default class Term extends Component {
           <h5 className="term-definition">{this.props.term.definition}</h5>
         </span>
       </div>
-    )
+    );
   }
 }

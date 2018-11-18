@@ -10,17 +10,23 @@ export default class NoteCard extends Component {
       position: {
         x: this.props.card.x,
         y: this.props.card.y,
-      }
+      },
     };
   }
 
   onDrag = (e) => {
-    this.setState({ position: { x: e.clientX, y: e.clientY }});
+    this.setState({ position: { x: e.clientX, y: e.clientY } });
   }
 
   onStopDrag = (e) => {
-    this.setState({ position: { x: e.clientX * .6 , y: e.clientY * .6}});
-    notes.updateNotePosition({ id: this.props.id, title: this.props.card.title, text: this.props.card.text, x: e.clientX * .6, y: e.clientY * .6});
+    this.setState({ position: { x: e.clientX * 0.6, y: e.clientY * 0.6 } });
+    notes.updateNotePosition({
+      id: this.props.id,
+      title: this.props.card.title,
+      text: this.props.card.text,
+      x: e.clientX * 0.6,
+      y: e.clientY * 0.6,
+    });
   }
 
   render() {
@@ -40,6 +46,6 @@ export default class NoteCard extends Component {
           </div>
         </Draggable>
       </div>
-    )
+    );
   }
 }

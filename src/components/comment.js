@@ -12,6 +12,6 @@ export default class Comment extends Component {
       <div className="comment-container">
         {this.props.comment.text}
       </div>
-    )
+    );
   }
 }

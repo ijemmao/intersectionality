@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Comment from './../components/comment';
 import terms from './../actions/terms';
-import './../styles/discussion.css'
+import './../styles/discussion.css';
 
 export default class Discussion extends Component {
   constructor(props) {
     super(props);
-    this.state= {
+    this.state = {
       comment: '',
       comments: [],
     };
@@ -18,24 +18,24 @@ export default class Discussion extends Component {
     }
   }
 
-  renderComments = () => {
-    return this.state.comments.map((comment, index) => {
-      return (<Comment key={index} comment={comment} />)
-    })
-  }
-
   handleCommentInput = (e) => {
     this.setState({ comment: e.target.value });
   }
 
   handleNewComment = () => {
     if (this.state.comment.length > 5) {
-      let newComment = { text: this.state.comment, vote: 0 };
-      let comments = this.state.comments;
+      const newComment = { text: this.state.comment, vote: 0 };
+      const comments = this.state.comments;
       comments.push(newComment);
-      this.setState({ comment: '', comments: comments });
+      this.setState({ comment: '', comments });
       terms.addComment({ id: this.props.id, comment: newComment });
     }
+  }
+
+  renderComments = () => {
+    return this.state.comments.map((comment, index) => {
+      return (<Comment key={index} comment={comment} />);
+    });
   }
 
   render() {
@@ -48,6 +48,6 @@ export default class Discussion extends Component {
         </div>
         {this.renderComments()}
       </div>
-    )
+    );
   }
 }
