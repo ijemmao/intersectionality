@@ -14,7 +14,7 @@ export default class Home extends Component {
       noteModalIsOpen: false,
       terms: {},
       notes: {},
-    }
+    };
   }
 
   componentWillMount = () => {
@@ -71,10 +71,24 @@ export default class Home extends Component {
 
   render() {
     return (
-      <>
-        <Notes uid={this.state.uid} noteCards={this.state.notes} createNewNote={this.createNewNote} noteModalIsOpen={this.state.noteModalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
-        <TermList uid={this.state.uid} terms={this.state.terms} createNewTerm={this.createNewTerm} modalIsOpen={this.state.modalIsOpen} openModal={this.openModal} closeModal={this.closeModal} />
-      </>
-    )
+      <React.Fragment>
+        <Notes
+          uid={this.state.uid}
+          noteCards={this.state.notes}
+          createNewNote={this.createNewNote}
+          noteModalIsOpen={this.state.noteModalIsOpen}
+          openModal={this.openModal}
+          closeModal={this.closeModal}
+        />
+        <TermList
+          uid={this.state.uid}
+          terms={this.state.terms}
+          createNewTerm={this.createNewTerm}
+          modalIsOpen={this.state.modalIsOpen}
+          openModal={this.openModal}
+          closeModal={this.closeModal}
+        />
+      </React.Fragment>
+    );
   }
 }

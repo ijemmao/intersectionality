@@ -21,38 +21,38 @@ export default class DetailedTerm extends Component {
   }
 
   componentWillMount = () => {
-    let id = window.location.pathname.split('/')[2];
+    const id = window.location.pathname.split('/')[2];
     this.setState({ id });
     terms.getTerm(id).then((snapshot) => {
-      let value = snapshot.val();
+      const value = snapshot.val();
       this.setState({
         term: value.term,
         type: value.type,
         definition: value.definition,
         comments: value.comments,
-      })
+      });
       terms.getWiki(value.term).then((wikipedia) => {
         this.setState({ wikipediaInformation: wikipedia });
         document.querySelector('.wikipedia-body').appendChild(wikipedia);
       }).catch((error) => {
         console.log(error.error);
-      })
-    })
+      });
+    });
     users.signInAnon().then((uid) => {
       this.setState({ uid });
     });
     users.getUsers().then((count) => {
       this.setState({ totalUsers: count });
-    })
+    });
   }
 
   renderWikipedia = () => {
     return (
       <div className="wikipedia-container">
         <h1>From Wikipedia</h1>
-        <div className="wikipedia-body"></div>
+        <div className="wikipedia-body" />
       </div>
-    )
+    );
   }
 
 
@@ -66,10 +66,10 @@ export default class DetailedTerm extends Component {
         </div>
         <div className="right-detailed-container">
           {this.state.wikipediaInformation ? this.renderWikipedia() : null}
-          <Stats id={this.state.id} totalUsers={this.state.totalUsers} />
-          <Discussion id={this.state.id} comments={this.state.comments} />
+          <Stats uid={this.state.uid} id={this.state.id} totalUsers={this.state.totalUsers} />
+          <Discussion uid={this.state.uid} id={this.state.id} comments={this.state.comments} />
         </div>
       </div>
-    )
+    );
   }
 }

@@ -14,7 +14,7 @@ const App = (props) => {
         <Route render={() => (<div>post not found</div>)} />
       </Switch>
     </Router>
-  )
-}
+  );
+};
 
 export default App;
