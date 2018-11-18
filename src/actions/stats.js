@@ -13,7 +13,7 @@ const getSelectedTermCount = (id) => {
         }
       }
       resolve(selectionCount);
-    }); 
+    });
   });
 };
 
