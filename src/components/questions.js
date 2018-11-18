@@ -78,6 +78,14 @@ export default class Questions extends Component {
     } return null;
   }
 
+  renderIndex = () => {
+    if (this.state.questions.length > 0) {
+      return (
+        <span>{this.state.currentIndex + 1} / {this.state.questions.length}</span>
+      );
+    } return null;
+  }
+
   render() {
     return (
       <div>
@@ -142,6 +150,7 @@ export default class Questions extends Component {
         <span>
           <button className="questions-navigation" onClick={this.goBack}>{'<'}</button>
           <button className="questions-navigation" onClick={this.goForward}>{'>'}</button>
+          {this.renderIndex()}
         </span>
       </div>
     );

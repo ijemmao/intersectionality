@@ -84,30 +84,33 @@ export default class Notes extends Component {
         </Modal>
         <div className="notes-header">
           <div>
-            <h1>Notes</h1>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <h1>Notes</h1>
+              <img
+                src={newNote}
+                alt="new note"
+                className="icon new-note"
+                onClick={() => {
+                  this.setState({
+                    title: '',
+                    text: '',
+                  });
+                  this.props.openModal('note');
+                }}
+              />
+
+            </div>
             <h6>Feel free to drag them around</h6>
           </div>
-          <img
-            src={newNote}
-            alt="new note"
-            className="icon new-note"
-            onClick={() => {
-              this.setState({
-                title: '',
-                text: '',
-              });
-              this.props.openModal('note');
-            }}
+          <Questions
+            uid={this.props.uid}
+            questions={this.props.questions}
+            createNewQuestion={this.props.createNewQuestion}
+            openModal={this.props.openModal}
+            closeModal={this.props.closeModal}
+            questionModalIsOpen={this.props.questionModalIsOpen}
           />
         </div>
-        <Questions
-          uid={this.props.uid}
-          questions={this.props.questions}
-          createNewQuestion={this.props.createNewQuestion}
-          openModal={this.props.openModal}
-          closeModal={this.props.closeModal}
-          questionModalIsOpen={this.props.questionModalIsOpen}
-        />
         <div>
           {this.renderNoteCards()}
         </div>
