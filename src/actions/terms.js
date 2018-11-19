@@ -67,13 +67,20 @@ const getWiki = (term) => {
           const redirect = el.querySelector('a').innerText;
           resolve(getWiki(redirect));
         }
+        console.log(el);
+        const redirectOption = el.querySelector('table + p + ul li ul li a');
+        if (redirectOption && redirectOption.href) {
+          resolve(getWiki(redirectOption.innerText));
+        }
+
+
         const allParagraphs = el.querySelectorAll('p');
         for (let i = 0; i < allParagraphs.length; i += 1) { // finding the correct paragraph to show
           const firstPhraseCheck = allParagraphs[i].innerText.toUpperCase().startsWith(term.toUpperCase());
           const secondWord = allParagraphs[i].innerText.split(' ')[1];
           if (firstPhraseCheck || (secondWord && secondWord.toUpperCase() === term.split(' ')[0].toUpperCase())) {
             cleanWiki(allParagraphs[i], uri, cleanedTerm);
-            resolve(allParagraphs[i]);
+            resolve([allParagraphs[i], allParagraphs[i + 1], allParagraphs[i + 3]]);
           }
         }
       } else { // page doesn't exist

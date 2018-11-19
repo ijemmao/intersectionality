@@ -50,8 +50,7 @@ const signInAnon = () => {
 const getUsers = () => {
   return new Promise((resolve, reject) => {
     database.ref('users').once('value').then((snapshot) => {
-      const value = snapshot.val();
-      resolve(value.length);
+      resolve(Object.entries(snapshot.val()).length);
     });
   });
 };
