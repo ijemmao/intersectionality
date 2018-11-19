@@ -16,18 +16,23 @@ const getTerm = (id) => {
 };
 
 const updateTerm = (data) => {
-  getTerm(data.id).then((snapshot) => {
-    const value = snapshot.val();
-    if (!value.selection) {
-      value.selection = {};
-    }
-    value.selection[data.uid] = data.checked;
-    return database.ref(`terms/${data.id}`).set({
-      author: value.author,
-      definition: value.definition,
-      term: value.term,
-      type: value.type,
-      selection: value.selection,
+  return new Promise((resolve) => {
+    getTerm(data.id).then((snapshot) => {
+      const value = snapshot.val();
+      if (!value.selection) {
+        value.selection = {};
+      }
+      value.definition = data.definition;
+      value.term = data.term;
+      value.type = data.type;
+      value.selection[data.uid] = data.checked;
+      resolve(database.ref(`terms/${data.id}`).set({
+        author: value.author,
+        definition: value.definition,
+        term: value.term,
+        type: value.type,
+        selection: value.selection,
+      }));
     });
   });
 };
@@ -67,7 +72,6 @@ const getWiki = (term) => {
           const redirect = el.querySelector('a').innerText;
           resolve(getWiki(redirect));
         }
-        console.log(el);
         const redirectOption = el.querySelector('table + p + ul li ul li a');
         if (redirectOption && redirectOption.href) {
           resolve(getWiki(redirectOption.innerText));
