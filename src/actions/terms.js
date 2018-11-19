@@ -73,7 +73,8 @@ const getWiki = (term) => {
           const secondWord = allParagraphs[i].innerText.split(' ')[1];
           if (firstPhraseCheck || (secondWord && secondWord.toUpperCase() === term.split(' ')[0].toUpperCase())) {
             cleanWiki(allParagraphs[i], uri, cleanedTerm);
-            resolve(allParagraphs[i]);
+            resolve([allParagraphs[i], allParagraphs[i + 1], allParagraphs[i + 2]]);
+            // don't include sections that end in colors ':'
           }
         }
       } else { // page doesn't exist
