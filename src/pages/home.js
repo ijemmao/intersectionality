@@ -117,14 +117,13 @@ export default class Home extends Component {
                 to further conversations surrounding the topic of the #MeToo movement and intersectionality.
               </p>
               <p>
-                There are several features that have been included in this website that will
-                give students the opportunities to interact with one another.
+                Several features included in this website give students the opportunity to interact with one another.
               </p>
               <p>
-                Notes - Students can add anonymous notes that stay within the theme of the platform <br />
-                Terms - There{'\''}s a pletora of identiteis that exist. This list is great place for students to curate a list of terms they know of or even use<br />
-                Checkmarks - Students can anonymously check terms that use or identify with, so the data can be showcased to the entire platform.<br />
-                Discussions - For each term, there{'\''}s a discussion section that give students the opportunity to ask questions or comment on that specific term.
+                Notes - Students can add anonymous notes that stay within the theme of the platform.<br />
+                Terms - A pletora of identities exist. This list is great place for students to curate a list of terms they know of or even use.<br />
+                Checkmarks - Students can anonymously check terms they use or identify with, so the data can be showcased to the entire platform.<br />
+                Discussions - For each term, there{'\''}s a discussion section that gives students the opportunity to ask questions or comment on that specific term.
               </p>
               <p>Most importantly, be kind, respectful, and open-minded</p>
               <button className="start-button" onClick={this.closeWelcomeModal}>Let{'\''}s go</button>
