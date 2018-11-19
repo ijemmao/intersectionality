@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import terms from '../actions/terms';
+import users from '../actions/users';
 import edit from './../assets/images/edit.svg';
 import './../styles/term.css';
 
@@ -22,6 +23,7 @@ export default class Term extends Component {
     if (nextProps.term.selection && nextProps.term.selection[nextProps.uid]) {
       const checkbox = document.querySelector(`#${this.props.id}.checkbox`);
       checkbox.checked = true;
+      users.includeUser(nextProps.uid);
       this.setState({ checked: true });
     }
   }
@@ -49,6 +51,7 @@ export default class Term extends Component {
   }
 
   handleDefinition = (e) => {
+    users.includeUser(this.props.uid);
     this.setState({ definition: e.target.value });
   }
 
@@ -65,7 +68,6 @@ export default class Term extends Component {
     terms.updateTerm(data).then(() => {
       terms.getTerm(this.props.id).then((snapshot) => {
         const value = snapshot.val();
-        console.log(value);
         this.setState({
           updatedTerm: value.term,
           updatedType: value.type,

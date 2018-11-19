@@ -14,12 +14,17 @@ const addUser = (uid) => {
       }
 
       if (values[uid] !== null && values[uid] !== undefined) {
-        addValue = 2;
+        console.log(values);
+        if (values[uid].checked) {
+          addValue = { count: 2, checked: values[uid].checked };
+        } else {
+          addValue = { count: 2, checked: true };
+        }
         add = false;
       }
 
       if (add) {
-        addValue = 1;
+        addValue = { count: 1, checked: false };
       }
       database.ref(`users/${uid}`).set(addValue);
       resolve(addValue);
@@ -47,6 +52,19 @@ const signInAnon = () => {
   });
 };
 
+const includeUser = (uid) => {
+  return new Promise((resolve) => {
+    database.ref(`users/${uid}`).once('value').then((snapshot) => {
+      console.log('snap', snapshot.val());
+      if (snapshot) {
+        const value = snapshot.val();
+        value.checked = true;
+        database.ref(`users/${uid}`).set(value);
+      }
+    });
+  });
+};
+
 const getUsers = () => {
   return new Promise((resolve, reject) => {
     database.ref('users').once('value').then((snapshot) => {
@@ -55,4 +73,4 @@ const getUsers = () => {
   });
 };
 
-export default { signInAnon, getUsers };
+export default { signInAnon, getUsers, includeUser };
