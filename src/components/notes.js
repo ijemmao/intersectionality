@@ -15,10 +15,6 @@ export default class Notes extends Component {
     };
   }
 
-
-  componentWillReceiveProps = (nextProps) => {
-    console.log(nextProps);
-  }
   handleTitleText = (e) => {
     this.setState({ title: e.target.value });
   }

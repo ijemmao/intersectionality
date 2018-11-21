@@ -27,6 +27,11 @@
   max-width: 250px;
 }
 
+.card-input-header {
+  display: flex;
+  flex-direction: column;
+}
+
 .term {
   color: rgb(70, 52, 20);
   font-weight: 700;
@@ -42,6 +47,11 @@
   color: rgb(70, 52, 20);
   font-weight: 400;
   margin: 0;
+}
+
+#edit {
+  height: 3vh;
+  margin: 10px 0 -10px 0;
 }
 
 .checkbox {
@@ -79,4 +89,26 @@
 	top: 0px;
 	left: 3px;
   color: #2b363f;
+}
+
+.term-input, .type-input {
+  width: 20vw;
+}
+
+.term-input {
+  margin-top: 30px;
+}
+
+textarea {
+  width: 20vw;
+  outline: none;
+  resize: none;
+  border: 1px solid rgb(109, 109, 109);
+}
+
+.update-term {
+  position: relative;
+  float: right;
+  margin-top: 5vh;
+  margin-right: 3vh;
 }
