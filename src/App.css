@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700');
 
+body {
+  background-color: #17181c;
+  color: white;
+}
+
+a {
+  color: rgb(140, 140, 255);
+}
+
+a:visited {
+  color: rgb(110, 255, 243);
+}
+
 #root {
   display: flex;
 }

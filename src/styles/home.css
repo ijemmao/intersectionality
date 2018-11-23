@@ -33,11 +33,11 @@
 
 
 h5 {
-  color: rgb(43, 43, 43);
+  color: rgb(240, 240, 240);
 }
 
-h1:hover {
-  color: rgb(75, 75, 75);
+#header:hover {
+  color: rgb(158, 158, 158);
   transition: color .2s ease;
 }
 

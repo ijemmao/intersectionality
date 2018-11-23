@@ -11,6 +11,10 @@
   animation: fadein .5s;
 }
 
+h3 {
+  color: black;
+}
+
 .card-body {
   outline: none;
 }

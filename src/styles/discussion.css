@@ -4,7 +4,9 @@
 }
 
 .discussion-text-input {
+  background-color: transparent;
   border: 1px solid rgb(99, 99, 99);
+  color: white;
   resize: none;
   outline: none;
   margin-bottom: 30px;
@@ -22,13 +24,15 @@
   height: 30px;
   width: 75px;
   margin-bottom: 20px;
-  border: 1px solid #000;
+  border: 1px solid white;
   outline: none;
   cursor: pointer;
+  background-color: transparent;
+  color: white;
 }
 
 .submit-comment:hover {
-  border: 1px solid rgb(56, 56, 56);
-  background-color: rgb(141, 141, 141);
+  border: 1px solid rgb(160, 160, 160);
+  background-color: rgb(19, 19, 19);
   color: #fff;
 }
