@@ -42,7 +42,7 @@ export default class Discussion extends Component {
     return (
       <div className="discussion-container">
         <h1>Discussion</h1>
-        <h6>With the provided information above, continue the conversation below</h6>
+        <h6>With the provided information above, continue the conversation about this term below</h6>
         <div className="input-container">
           <textarea rows="3" placeholder="Share your thoughts" className="discussion-text-input" value={this.state.comment} onChange={this.handleCommentInput} />
           <button type="submit" className="submit-comment" onClick={this.handleNewComment}>Submit</button>
