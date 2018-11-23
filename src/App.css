@@ -17,6 +17,10 @@ a:visited {
   color: #000;
 }
 
+.modal-content-container a {
+  color: rgb(4, 107, 204);
+}
+
 #root {
   display: flex;
 }
