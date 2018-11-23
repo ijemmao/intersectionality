@@ -83,6 +83,7 @@ export default class TermList extends Component {
         <div className="term-list-header">
           <div>
             <h1>Terms</h1>
+            <h6>Create term cards to list out identities</h6>
             <h6>Select your identities for anonymous data collection</h6>
           </div>
           <img

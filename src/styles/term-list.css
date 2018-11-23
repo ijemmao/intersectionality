@@ -8,6 +8,10 @@
   padding: 0 20px;
 }
 
+h6 {
+  margin: 0 0 10px 0;
+}
+
 .term-list-header {
   display: flex;
   flex-direction: row;
