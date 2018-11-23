@@ -74,6 +74,8 @@ export default class Notes extends Component {
               </p>
               <p>These notes will be publically accessed and cannot be removed unless requested.</p>
               <p>Feel free to add as many notes as you feel necessary and benefical! Don{'\''}t spam!</p>
+              <p>For reading materials to guide conversations further, use the Syllabus page <a href="https://journeys.dartmouth.edu/metoo/syllabus/">#MeToo Blog</a></p>
+              <p>The password is: metoof18</p>
               <p>Have fun!</p>
             </div>
           </div>
