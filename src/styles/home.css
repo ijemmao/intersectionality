@@ -1,0 +1,43 @@
+@import url('./animations.css');
+@import url('./../App.css');
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sections-container {
+  display: flex;
+  flex-direction: row;
+}
+
+#header, h5 {
+  text-align: center;
+}
+
+#header {
+  height: fit-content;
+  font-size: 2.6em;
+  cursor: pointer;
+}
+
+#header:after {
+  display: inline-block;
+  content: '';
+	background-image: url('./../assets/images/question.svg');
+  background-size: 25px 25px;
+  height: 25px;
+  width: 25px;
+  margin-bottom: 15px;
+}
+
+
+h5 {
+  color: rgb(43, 43, 43);
+}
+
+h1:hover {
+  color: rgb(75, 75, 75);
+  transition: color .2s ease;
+}
+
