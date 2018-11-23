@@ -96,7 +96,8 @@ export default class Notes extends Component {
               />
 
             </div>
-            <h6>Feel free to drag them around</h6>
+            <h6>Add anonymous note cards to engage conversations</h6>
+            <h6>Feel free to draf the cards around</h6>
           </div>
           <Questions
             uid={this.props.uid}

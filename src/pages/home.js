@@ -7,6 +7,7 @@ import notes from './../actions/notes';
 import users from './../actions/users';
 import questions from './../actions/questions';
 import exit from './../assets/images/exit.svg';
+import './../styles/home.css';
 import './../styles/modal.css';
 
 export default class Home extends Component {
@@ -95,13 +96,22 @@ export default class Home extends Component {
     }
   }
 
+  openWelcomeModal = () => {
+    this.setState({ welcomeModalIsOpen: true });
+  }
+
   closeWelcomeModal = () => {
     this.setState({ welcomeModalIsOpen: false });
   }
 
   render() {
     return (
-      <React.Fragment>
+      <div clasName="home-container">
+        <div>
+          <h1 onClick={this.openWelcomeModal} id="header">#MeToo: Intersectionality</h1>
+          <div className="horizontal-divider" />
+          <h5>An interactive web tool to expand the conversation surrounding #MeToo and sexual assualt</h5>
+        </div>
         <Modal
           isOpen={this.state.welcomeModalIsOpen}
           onRequestClose={this.state.closeWelcomeModal}
@@ -130,26 +140,28 @@ export default class Home extends Component {
             </div>
           </div>
         </Modal>
-        <Notes
-          uid={this.state.uid}
-          noteCards={this.state.notes}
-          questions={this.state.questions}
-          createNewNote={this.createNewNote}
-          createNewQuestion={this.createNewQuestion}
-          noteModalIsOpen={this.state.noteModalIsOpen}
-          questionModalIsOpen={this.state.questionModalIsOpen}
-          openModal={this.openModal}
-          closeModal={this.closeModal}
-        />
-        <TermList
-          uid={this.state.uid}
-          terms={this.state.terms}
-          createNewTerm={this.createNewTerm}
-          modalIsOpen={this.state.modalIsOpen}
-          openModal={this.openModal}
-          closeModal={this.closeModal}
-        />
-      </React.Fragment>
+        <div className="sections-container">
+          <Notes
+            uid={this.state.uid}
+            noteCards={this.state.notes}
+            questions={this.state.questions}
+            createNewNote={this.createNewNote}
+            createNewQuestion={this.createNewQuestion}
+            noteModalIsOpen={this.state.noteModalIsOpen}
+            questionModalIsOpen={this.state.questionModalIsOpen}
+            openModal={this.openModal}
+            closeModal={this.closeModal}
+          />
+          <TermList
+            uid={this.state.uid}
+            terms={this.state.terms}
+            createNewTerm={this.createNewTerm}
+            modalIsOpen={this.state.modalIsOpen}
+            openModal={this.openModal}
+            closeModal={this.closeModal}
+          />
+        </div>
+      </div>
     );
   }
 }

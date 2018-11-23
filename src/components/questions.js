@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import newNote from './../assets/images/new_note.svg';
 import exit from './../assets/images/exit.svg';
 import questions from './../actions/questions';
+import questionsData from './../data/questions-data';
 import './../styles/questions.css';
 
 export default class Questions extends Component {
@@ -19,12 +20,7 @@ export default class Questions extends Component {
     questions.getQuestions().then((snapshot) => {
       let cleanedQuestions = this.convertQuestions(snapshot.val());
       if (cleanedQuestions.length === 0) {
-        const tempQuestions = [
-          'What does #MeToo mean to you?',
-          'How does one\'s identity come into play when talking about sexual harassment or assault?',
-          'What are your opinions on how institutions like Dartmouth handle sexual asssult?',
-          'Do you think there\'s a group of people who bear the responsiblity and power to end sexual harassment?',
-        ];
+        const tempQuestions = questionsData.tempQuestions;
 
         tempQuestions.forEach((q) => {
           questions.addQuestion({ author: this.props.uid, question: q });

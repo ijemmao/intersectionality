@@ -32,3 +32,18 @@ input {
 button {
   outline: none;
 }
+
+.vertical-divider {
+  height: 40vh;
+  width: 1px;
+  margin-top: 22vh;
+  margin-right: 3vw;
+  background-color: rgb(90, 90, 90);
+}
+
+.horizontal-divider {
+  height: 1px;
+  width: 10vw;
+  margin: 4vh auto;
+  background-color: rgb(90, 90, 90);
+}
