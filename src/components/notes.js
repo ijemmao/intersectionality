@@ -72,8 +72,8 @@ export default class Notes extends Component {
                 think about the information you place on this board before you add them.
                 This tools is meant to create a support community
               </p>
-              <p>These notes will be publically accessed and cannot be removed unless requested.</p>
-              <p>Feel free to add as many notes as you feel necessary and benefical! Don{'\''}t spam!</p>
+              <p>These notes will be publicly accessed and cannot be removed unless requested.</p>
+              <p>Feel free to add as many notes as you feel necessary and beneficial! Don{'\''}t spam!</p>
               <p>For reading materials to guide conversations further, use the Syllabus page <a href="https://journeys.dartmouth.edu/metoo/syllabus/">#MeToo Blog</a></p>
               <p>The password is: metoof18</p>
               <p>Have fun!</p>
@@ -99,7 +99,7 @@ export default class Notes extends Component {
 
             </div>
             <h6>Add anonymous note cards to engage conversations</h6>
-            <h6>Feel free to draf the cards around</h6>
+            <h6>Feel free to drag the cards around</h6>
           </div>
           <Questions
             uid={this.props.uid}

@@ -74,7 +74,6 @@ const getUsers = () => {
           if (value[1].checked) count += 1;
         }
       });
-      console.log(count);
       resolve(count);
     });
   });

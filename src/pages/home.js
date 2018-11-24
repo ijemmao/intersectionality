@@ -106,11 +106,11 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div clasName="home-container">
+      <div className="home-container">
         <div>
           <h1 onClick={this.openWelcomeModal} id="header">#MeToo: Intersectionality</h1>
           <div className="horizontal-divider" />
-          <h5>An interactive web tool to expand the conversation surrounding #MeToo and sexual assualt</h5>
+          <h5>An interactive web tool to expand the conversation surrounding #MeToo and sexual assault</h5>
         </div>
         <Modal
           isOpen={this.state.welcomeModalIsOpen}
@@ -131,8 +131,8 @@ export default class Home extends Component {
               </p>
               <p>
                 Notes - Students can add anonymous notes that stay within the theme of the platform.<br /><br />
-                Terms - A pletora of identities exist. This list is great place for students to curate a list of terms they know of or even use.<br /><br />
-                Checkmarks - Students can anonymously check terms they use or identify with, so the data can be showcased to the entire platform.<br /><br />
+                Terms - A plethora of identities exist. This list is great place for students to curate a list of terms they know of or even use.<br /><br />
+                Check Marks - Students can anonymously check terms they use or identify with, so the data can be showcased to the entire platform.<br /><br />
                 Discussions - For each term, there{'\''}s a discussion section that gives students the opportunity to ask questions or comment on that specific term.
               </p>
               <p>Most importantly, be kind, respectful, and open-minded</p>

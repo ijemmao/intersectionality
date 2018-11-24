@@ -1,8 +1,8 @@
 const tempQuestions = [
   'What does #MeToo mean to you?',
   'How does one\'s identity come into play when talking about sexual harassment or assault?',
-  'What are your opinions on how institutions like Dartmouth handle sexual asssult?',
-  'Do you think there\'s a group of people who bear the responsiblity and power to end sexual harassment?',
+  'What are your opinions on how institutions like Dartmouth handle sexual assault?',
+  'Do you think there\'s a group of people who bear the responsibility and power to end sexual harassment?',
   'How important do you think it is for Tarana Burke to lead this movement?',
   'Thinking of the theme visibility and invisibility, how do you think the movement plays into this concept?',
   'How did race and gender interplay with one another concerning the Anita Hill and Clarence Thomas case?',
